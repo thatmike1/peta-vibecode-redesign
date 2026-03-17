@@ -265,7 +265,7 @@ function AboutSection() {
     >
       <Reveal>
         <h2
-          className="font-serif text-4xl md:text-5xl mb-12 scroll-slide-left"
+          className="font-serif text-4xl md:text-5xl mb-12"
           style={{ color: TEXT_PRIMARY }}
         >
           O mně
@@ -274,7 +274,7 @@ function AboutSection() {
 
       <Reveal delay={100}>
         <blockquote
-          className="glass-card rounded-2xl p-8 mb-10 border-l-4 scroll-reveal"
+          className="glass-card rounded-2xl p-8 mb-10 border-l-4"
           style={{ borderLeftColor: TEAL }}
         >
           <p
@@ -289,7 +289,7 @@ function AboutSection() {
       <div className="grid md:grid-cols-2 gap-6">
         {about.slice(1).map((paragraph, i) => (
           <Reveal key={i} delay={150 + i * 100}>
-            <div className="glass-card rounded-xl p-6 h-full scroll-reveal">
+            <div className="glass-card rounded-xl p-6 h-full">
               <p
                 className="leading-relaxed text-[15px]"
                 style={{ color: TEXT_SECONDARY }}
@@ -316,7 +316,7 @@ function EducationSection() {
     >
       <div className="max-w-5xl mx-auto">
         <Reveal>
-          <div className="flex items-center gap-3 mb-14 scroll-slide-left">
+          <div className="flex items-center gap-3 mb-14">
             <GraduationCap size={28} style={{ color: TEAL }} />
             <h2
               className="font-serif text-4xl md:text-5xl"
@@ -340,9 +340,7 @@ function EducationSection() {
           <div className="space-y-10">
             {education.map((edu, i) => (
               <Reveal key={i} delay={i * 150}>
-                <div
-                  className={`flex gap-6 md:gap-8 ${i % 2 === 0 ? "scroll-slide-left" : "scroll-slide-right"}`}
-                >
+                <div className="flex gap-6 md:gap-8">
                   {/* glowing dot */}
                   <div className="relative flex-shrink-0">
                     <div
@@ -420,7 +418,7 @@ function ExperienceSection() {
     >
       <div className="max-w-5xl mx-auto">
         <Reveal>
-          <div className="flex items-center gap-3 mb-14 scroll-slide-left">
+          <div className="flex items-center gap-3 mb-14">
             <Briefcase size={28} style={{ color: "oklch(0.65 0.20 45)" }} />
             <h2
               className="font-serif text-4xl md:text-5xl"
@@ -437,7 +435,7 @@ function ExperienceSection() {
               <div
                 onMouseEnter={() => setHoveredIdx(i)}
                 onMouseLeave={() => setHoveredIdx(null)}
-                className="glass-card relative rounded-xl p-6 md:p-8 scroll-reveal"
+                className="glass-card relative rounded-xl p-6 md:p-8"
                 style={{
                   borderColor:
                     hoveredIdx === i ? "oklch(0.55 0.15 175 / 0.3)" : undefined,
@@ -525,7 +523,7 @@ function ProjectsSection() {
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <h2
-            className="font-serif text-4xl md:text-5xl mb-4 scroll-slide-left"
+            className="font-serif text-4xl md:text-5xl mb-4"
             style={{ color: TEXT_PRIMARY }}
           >
             Projekty
@@ -539,7 +537,7 @@ function ProjectsSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, i) => (
             <Reveal key={i} delay={i * 80}>
-              <TiltCard className="h-full scroll-reveal">
+              <TiltCard className="h-full">
                 <div className="glass-card h-full rounded-xl p-6 flex flex-col group">
                   <h3
                     className="font-serif text-lg mb-2 transition-colors"
@@ -620,7 +618,7 @@ function SkillsSection() {
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <h2
-            className="font-serif text-4xl md:text-5xl mb-4 scroll-slide-left"
+            className="font-serif text-4xl md:text-5xl mb-4"
             style={{ color: TEXT_PRIMARY }}
           >
             Dovednosti
@@ -633,7 +631,7 @@ function SkillsSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
           {skills.map((category, catIdx) => (
             <Reveal key={catIdx} delay={catIdx * 80}>
-              <div className="scroll-reveal">
+              <div>
                 <h3
                   className="text-sm font-mono tracking-wider uppercase mb-5 pb-2"
                   style={{
@@ -674,7 +672,7 @@ function CertificationsSection() {
     >
       <div className="max-w-5xl mx-auto">
         <Reveal>
-          <div className="flex items-center gap-3 mb-14 scroll-slide-left">
+          <div className="flex items-center gap-3 mb-14">
             <Award size={28} style={{ color: TEAL }} />
             <h2
               className="font-serif text-4xl md:text-5xl"
@@ -688,7 +686,7 @@ function CertificationsSection() {
         <div className="grid md:grid-cols-2 gap-6">
           {certifications.map((cert, i) => (
             <Reveal key={i} delay={i * 120}>
-              <div className="glass-card rounded-xl p-6 relative overflow-hidden group scroll-reveal">
+              <div className="glass-card rounded-xl p-6 relative overflow-hidden group">
                 {/* glowing top accent on hover */}
                 <div
                   className="absolute top-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
@@ -735,7 +733,7 @@ function ServicesSection() {
       <div className="max-w-5xl mx-auto">
         <Reveal>
           <h2
-            className="font-serif text-4xl md:text-5xl mb-14 scroll-slide-left"
+            className="font-serif text-4xl md:text-5xl mb-14"
             style={{ color: TEXT_PRIMARY }}
           >
             Služby
@@ -748,7 +746,7 @@ function ServicesSection() {
               <div
                 className={`flex flex-col md:flex-row gap-6 md:gap-10 items-start ${
                   i % 2 === 1 ? "md:flex-row-reverse" : ""
-                } ${i % 2 === 0 ? "scroll-slide-left" : "scroll-slide-right"}`}
+                }`}
               >
                 {/* glowing number block */}
                 <div
@@ -817,7 +815,7 @@ function ContactSection() {
         <div className="max-w-5xl mx-auto">
           <Reveal>
             <h2
-              className="font-serif text-5xl md:text-6xl lg:text-7xl mb-6 scroll-slide-left"
+              className="font-serif text-5xl md:text-6xl lg:text-7xl mb-6"
               style={{ color: TEXT_PRIMARY }}
             >
               Kontakt
@@ -872,7 +870,7 @@ function ContactSection() {
                       ? "noopener noreferrer"
                       : undefined
                   }
-                  className="glass-card group flex items-center gap-4 rounded-xl p-5 scroll-reveal"
+                  className="glass-card group flex items-center gap-4 rounded-xl p-5"
                 >
                   <div
                     className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300"

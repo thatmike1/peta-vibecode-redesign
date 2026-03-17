@@ -124,49 +124,12 @@
   box-shadow: 0 0 20px oklch(0.55 0.15 175 / 0.15);
 }
 
-@keyframes float-up {
-  from { opacity: 0; transform: translateY(40px) scale(0.97); filter: blur(4px); }
-  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-}
-
-@keyframes slide-in-left {
-  from { opacity: 0; transform: translateX(-60px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes slide-in-right {
-  from { opacity: 0; transform: translateX(60px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
 @keyframes glow-pulse {
   0%, 100% { box-shadow: 0 0 20px oklch(0.55 0.15 175 / 0.1); }
   50% { box-shadow: 0 0 40px oklch(0.55 0.15 175 / 0.25); }
 }
 
-/* scroll-driven animations — progressive enhancement */
-@supports (animation-timeline: scroll()) {
-  .scroll-reveal {
-    animation: float-up linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 35%;
-  }
-
-  .scroll-slide-left {
-    animation: slide-in-left linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 30%;
-  }
-
-  .scroll-slide-right {
-    animation: slide-in-right linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 30%;
-  }
-}
-
 /* reduced motion: disable all fancy animations */
 @media (prefers-reduced-motion: reduce) {
   .glass-card, .glass-card:hover { transition: none; }
-  .scroll-reveal, .scroll-slide-left, .scroll-slide-right { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
 }
