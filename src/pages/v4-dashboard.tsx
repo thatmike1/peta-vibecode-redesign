@@ -34,46 +34,15 @@ import {
 
 /** maps skill categories to approximate proficiency levels for bar display */
 const skillLevels: Record<string, number> = {
-  QGIS: 95,
-  "ArcGIS Pro": 90,
-  "GDAL/OGR": 85,
-  GeoServer: 75,
-  MapServer: 70,
-  SNAP: 80,
-  "Agisoft Metashape": 70,
-  "OGC Standards": 80,
-  CloudCompare: 65,
-  Python: 92,
-  JavaScript: 85,
-  SQL: 90,
-  Bash: 75,
-  "C#": 55,
-  HTML: 90,
-  CSS: 88,
-  "REST API": 90,
-  WordPress: 75,
-  YOOtheme: 70,
-  PostgreSQL: 92,
-  PostGIS: 95,
-  MySQL: 70,
-  GeoPandas: 88,
-  Shapely: 85,
-  NumPy: 82,
-  Pandas: 85,
-  Matplotlib: 80,
-  YOLOv8: 80,
-  OpenCV: 78,
-  TensorFlow: 65,
-  PyTorch: 60,
-  "GitHub Copilot": 90,
-  Claude: 85,
-  Blender: 65,
-  MeshLab: 60,
-  Git: 90,
-  GitHub: 90,
-  Linux: 82,
-  Ubuntu: 80,
-  Docker: 70,
+  "GIS & Spatial Tools": 82,
+  "Programming Languages": 67,
+  "Web Technologies": 68,
+  Databases: 75,
+  "Geospatial & Data Libraries": 73,
+  "Computer Vision & AI": 58,
+  "AI Nástroje": 65,
+  "3D & Visualization": 50,
+  "DevOps & Infrastructure": 62,
 };
 
 /** dark base colors — subtle alternation between sections */
@@ -175,6 +144,20 @@ function HeroSection() {
                   key={tag}
                   className="glass-card-subtle px-3 py-1.5 text-xs font-mono rounded-full"
                   style={{ color: TEAL }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal delay={350}>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {hero.hashtags.map((tag) => (
+                <span
+                  key={tag}
+                  className="text-[10px] font-mono tracking-wide"
+                  style={{ color: TEXT_MUTED }}
                 >
                   {tag}
                 </span>
@@ -649,7 +632,7 @@ function SkillsSection() {
                     <SkillBar
                       key={item}
                       name={item}
-                      level={skillLevels[item] ?? 70}
+                      level={skillLevels[category.name] ?? 70}
                       delay={itemIdx * 80}
                     />
                   ))}

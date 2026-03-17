@@ -83,15 +83,15 @@ const contactLinks = [
 ];
 
 const skillLevels: Record<string, number> = {
-  "GIS & Spatial Tools": 95,
-  "Programming Languages": 88,
-  "Web Technologies": 78,
-  Databases: 92,
-  "Geospatial & Data Libraries": 85,
-  "Computer Vision & AI": 75,
-  "AI Nástroje": 70,
-  "3D & Visualization": 65,
-  "DevOps & Infrastructure": 78,
+  "GIS & Spatial Tools": 82,
+  "Programming Languages": 67,
+  "Web Technologies": 68,
+  Databases: 75,
+  "Geospatial & Data Libraries": 73,
+  "Computer Vision & AI": 58,
+  "AI Nástroje": 65,
+  "3D & Visualization": 50,
+  "DevOps & Infrastructure": 62,
 };
 
 /* ── ABOUT ──────────────────────────────────────────── */

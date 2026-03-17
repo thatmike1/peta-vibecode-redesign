@@ -38,6 +38,19 @@ export function HeroSection() {
               </div>
             </Reveal>
 
+            <Reveal delay={450}>
+              <div className="flex flex-wrap gap-2 mb-10">
+                {hero.hashtags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-[10px] font-mono tracking-wide text-hero-text/40 hover:text-hero-text/60 transition-colors"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </Reveal>
+
             <Reveal delay={500}>
               <div className="flex items-center gap-4">
                 <a

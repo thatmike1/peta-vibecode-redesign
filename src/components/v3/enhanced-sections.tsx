@@ -103,46 +103,15 @@ const markerColors = [
 ];
 
 const skillLevels: Record<string, number> = {
-  QGIS: 92,
-  "ArcGIS Pro": 85,
-  "GDAL/OGR": 80,
-  GeoServer: 70,
-  MapServer: 65,
-  SNAP: 72,
-  "Agisoft Metashape": 68,
-  "OGC Standards": 75,
-  CloudCompare: 60,
-  Python: 90,
-  JavaScript: 82,
-  SQL: 88,
-  Bash: 70,
-  "C#": 55,
-  HTML: 90,
-  CSS: 85,
-  "REST API": 88,
-  WordPress: 72,
-  YOOtheme: 65,
-  PostgreSQL: 88,
-  PostGIS: 90,
-  MySQL: 70,
-  GeoPandas: 85,
-  Shapely: 80,
-  NumPy: 78,
-  Pandas: 82,
-  Matplotlib: 75,
-  YOLOv8: 78,
-  OpenCV: 75,
-  TensorFlow: 60,
-  PyTorch: 58,
-  "GitHub Copilot": 85,
-  Claude: 80,
-  Blender: 65,
-  MeshLab: 55,
-  Git: 88,
-  GitHub: 90,
-  Linux: 78,
-  Ubuntu: 75,
-  Docker: 65,
+  "GIS & Spatial Tools": 82,
+  "Programming Languages": 67,
+  "Web Technologies": 68,
+  Databases: 75,
+  "Geospatial & Data Libraries": 73,
+  "Computer Vision & AI": 58,
+  "AI Nástroje": 65,
+  "3D & Visualization": 50,
+  "DevOps & Infrastructure": 62,
 };
 
 /* ── ABOUT ── */
@@ -448,7 +417,7 @@ export function V3SkillsSection() {
                 </h3>
                 <div className="space-y-3">
                   {category.items.map((item, si) => {
-                    const level = skillLevels[item] ?? 60;
+                    const level = skillLevels[category.name] ?? 60;
                     return (
                       <div key={item}>
                         <div className="flex justify-between items-baseline mb-1">

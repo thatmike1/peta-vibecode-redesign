@@ -52,6 +52,15 @@ export const hero = {
     "Spatial Databases",
     "Computer Vision",
   ],
+  hashtags: [
+    "#geoinformatika",
+    "#DPZ",
+    "#webgis",
+    "#prostoroveanalyzy",
+    "#mapoveaplikace",
+    "#geodata",
+    "#computervision",
+  ],
   coordinates: "49.5167°N, 18.3333°E",
   photo: "https://petrmikeska.cz/assets/img/passport.webp",
   linkedin: "https://www.linkedin.com/in/petr-mikeska-b25669262/",
@@ -301,11 +310,11 @@ export const skills: SkillCategory[] = [
   },
   {
     name: "Web Technologies",
-    items: ["HTML", "CSS", "REST API", "WordPress", "YOOtheme"],
+    items: ["HTML", "CSS", "REST API", "WordPress", "YOOtheme", "Supabase"],
   },
   {
     name: "Databases",
-    items: ["PostgreSQL", "PostGIS", "MySQL"],
+    items: ["PostgreSQL", "PostGIS", "MySQL", "Supabase"],
   },
   {
     name: "Geospatial & Data Libraries",

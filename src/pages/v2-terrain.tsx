@@ -63,6 +63,19 @@ export default function V2TerrainPage() {
                 </div>
               </Reveal>
 
+              <Reveal delay={750}>
+                <div className="flex flex-wrap gap-2 mb-10">
+                  {hero.hashtags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[9px] font-mono tracking-wide text-white/30 hover:text-white/50 transition-colors"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </Reveal>
+
               <Reveal delay={800}>
                 <div className="flex items-center gap-4">
                   <a
