@@ -86,7 +86,7 @@ const TEXT_MUTED = "oklch(0.45 0.01 180)";
 
 export default function V4DashboardPage() {
   return (
-    <div
+    <main
       className={`min-h-screen bg-[${BG_PRIMARY}]`}
       style={{ background: BG_PRIMARY }}
     >
@@ -108,7 +108,7 @@ export default function V4DashboardPage() {
       <ContourDivider flip />
       <ContactSection />
       <FooterSection />
-    </div>
+    </main>
   );
 }
 
@@ -188,6 +188,7 @@ function HeroSection() {
                 href={hero.cvUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Download CV - Petr Mikeska"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 glow-teal-sm hover:scale-[1.03]"
                 style={{
                   background: TEAL,
@@ -201,6 +202,7 @@ function HeroSection() {
                 href={hero.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn - Petr Mikeska"
                 className="glass-card inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm"
                 style={{ color: TEAL }}
               >
@@ -211,6 +213,7 @@ function HeroSection() {
                 href={hero.github}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="GitHub - Petr Mikeska"
                 className="glass-card inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm"
                 style={{ color: TEAL }}
               >
@@ -870,6 +873,7 @@ function ContactSection() {
                       ? "noopener noreferrer"
                       : undefined
                   }
+                  aria-label={`${item.label}: ${item.value}`}
                   className="glass-card group flex items-center gap-4 rounded-xl p-5"
                 >
                   <div

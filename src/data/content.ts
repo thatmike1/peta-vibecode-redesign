@@ -47,10 +47,10 @@ export const hero = {
   name: "Petr Mikeska",
   specialties: [
     "Web GIS",
-    "PostGIS API",
-    "Spatial Databases",
-    "GeoAI",
     "Remote Sensing",
+    "GeoAI",
+    "Spatial Databases",
+    "Computer Vision",
   ],
   coordinates: "49.5167°N, 18.3333°E",
   photo: "https://petrmikeska.cz/assets/img/passport.webp",
