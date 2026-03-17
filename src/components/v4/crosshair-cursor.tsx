@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 interface CrosshairCursorProps {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
+  id?: string;
 }
 
 /**
@@ -11,6 +13,8 @@ interface CrosshairCursorProps {
 export function CrosshairCursor({
   children,
   className = "",
+  style,
+  id,
 }: CrosshairCursorProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState({ x: -100, y: -100 });
@@ -48,7 +52,8 @@ export function CrosshairCursor({
     <div
       ref={containerRef}
       className={`relative ${className}`}
-      style={{ cursor: "none" }}
+      style={{ cursor: "none", ...style }}
+      id={id}
     >
       {children}
       <svg

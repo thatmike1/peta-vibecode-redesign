@@ -7,7 +7,7 @@ interface SkillBarProps {
 }
 
 /**
- * animated horizontal bar that fills from 0 to level% when scrolled into view
+ * animated horizontal bar with glow that fills from 0 to level% when scrolled into view
  */
 export function SkillBar({ name, level, delay = 0 }: SkillBarProps) {
   const { ref, isInView } = useInView();
@@ -22,14 +22,20 @@ export function SkillBar({ name, level, delay = 0 }: SkillBarProps) {
           {isInView ? `${level}%` : "0%"}
         </span>
       </div>
-      <div className="h-2.5 rounded-full bg-[oklch(0.15_0.02_180)] overflow-hidden">
+      <div
+        className="h-2 rounded-full overflow-hidden"
+        style={{ background: "oklch(0.15 0.02 180)" }}
+      >
         <div
-          className="h-full rounded-full"
+          className="h-full rounded-full relative"
           style={{
             width: isInView ? `${level}%` : "0%",
-            transition: `width 1.2s ease-out ${delay}ms`,
+            transition: `width 1.2s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
             background:
-              "linear-gradient(90deg, oklch(0.55 0.15 175), oklch(0.65 0.12 175))",
+              "linear-gradient(90deg, oklch(0.45 0.15 175), oklch(0.60 0.15 175))",
+            boxShadow: isInView
+              ? "0 0 12px oklch(0.55 0.15 175 / 0.4), 0 0 4px oklch(0.55 0.15 175 / 0.6)"
+              : "none",
           }}
         />
       </div>

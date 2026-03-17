@@ -76,91 +76,94 @@ const skillLevels: Record<string, number> = {
   Docker: 70,
 };
 
+/** dark base colors — subtle alternation between sections */
+const BG_PRIMARY = "oklch(0.09 0.02 180)";
+const BG_SECONDARY = "oklch(0.11 0.02 180)";
+const TEAL = "oklch(0.55 0.15 175)";
+const TEXT_PRIMARY = "oklch(0.93 0.005 80)";
+const TEXT_SECONDARY = "oklch(0.60 0.01 180)";
+const TEXT_MUTED = "oklch(0.45 0.01 180)";
+
 export default function V4DashboardPage() {
   return (
-    <div className="min-h-screen bg-[oklch(0.97_0.007_75)]">
-      {/* ── HERO ── */}
+    <div
+      className={`min-h-screen bg-[${BG_PRIMARY}]`}
+      style={{ background: BG_PRIMARY }}
+    >
       <HeroSection />
-
       <ContourDivider />
-
-      {/* ── ABOUT ── */}
       <AboutSection />
-
       <ContourDivider flip />
-
-      {/* ── EDUCATION ── */}
       <EducationSection />
-
       <ContourDivider />
-
-      {/* ── EXPERIENCE ── */}
       <ExperienceSection />
-
       <ContourDivider flip />
-
-      {/* ── PROJECTS ── */}
       <ProjectsSection />
-
       <ContourDivider />
-
-      {/* ── SKILLS ── */}
       <SkillsSection />
-
       <ContourDivider flip />
-
-      {/* ── CERTIFICATIONS ── */}
       <CertificationsSection />
-
       <ContourDivider />
-
-      {/* ── SERVICES ── */}
       <ServicesSection />
-
       <ContourDivider flip />
-
-      {/* ── CONTACT ── */}
       <ContactSection />
-
-      {/* ── FOOTER ── */}
       <FooterSection />
     </div>
   );
 }
 
-/* ═════════════════════════════════════════════════════════════════
-   HERO
-   ═════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   HERO — glass panel + parallax SVG map
+   ═══════════════════════════════════════════════════════════════ */
 function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center bg-[oklch(0.10_0.02_180)] overflow-hidden">
+    <section
+      className="relative min-h-screen flex items-center overflow-hidden"
+      style={{ background: BG_PRIMARY }}
+    >
+      {/* ambient glow */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full pointer-events-none"
+        style={{
+          background: `radial-gradient(circle, oklch(0.55 0.15 175 / 0.06) 0%, transparent 70%)`,
+        }}
+      />
+
       {/* subtle grid overlay */}
       <div
-        className="absolute inset-0 opacity-[0.04]"
+        className="absolute inset-0 opacity-[0.03]"
         style={{
-          backgroundImage:
-            "linear-gradient(oklch(0.55 0.15 175) 1px, transparent 1px), linear-gradient(90deg, oklch(0.55 0.15 175) 1px, transparent 1px)",
+          backgroundImage: `linear-gradient(${TEAL} 1px, transparent 1px), linear-gradient(90deg, ${TEAL} 1px, transparent 1px)`,
           backgroundSize: "60px 60px",
         }}
       />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-[55%_45%] gap-8 items-center py-20">
-        {/* left: text */}
+        {/* left: text in glass panel */}
         <div className="space-y-8">
           <Reveal>
-            <p className="text-sm font-mono tracking-[0.3em] uppercase text-[oklch(0.55_0.15_175)]">
+            <p
+              className="text-sm font-mono tracking-[0.3em] uppercase"
+              style={{ color: TEAL }}
+            >
               {hero.coordinates}
             </p>
           </Reveal>
 
           <Reveal delay={100}>
-            <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl text-[oklch(0.95_0.005_80)] leading-[0.95]">
+            <h1
+              className="font-serif text-6xl md:text-7xl lg:text-8xl leading-[0.95]"
+              style={{ color: TEXT_PRIMARY }}
+            >
               {hero.name}
             </h1>
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="text-lg md:text-xl text-[oklch(0.65_0.01_180)] max-w-lg">
+            <p
+              className="text-lg md:text-xl max-w-lg"
+              style={{ color: TEXT_SECONDARY }}
+            >
               GIS Analyst & Geospatial Developer
             </p>
           </Reveal>
@@ -170,7 +173,8 @@ function HeroSection() {
               {hero.specialties.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1.5 text-xs font-mono rounded-full border border-[oklch(0.55_0.15_175_/_0.3)] text-[oklch(0.55_0.15_175)] bg-[oklch(0.55_0.15_175_/_0.08)]"
+                  className="glass-card-subtle px-3 py-1.5 text-xs font-mono rounded-full"
+                  style={{ color: TEAL }}
                 >
                   {tag}
                 </span>
@@ -184,7 +188,11 @@ function HeroSection() {
                 href={hero.cvUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[oklch(0.55_0.15_175)] text-[oklch(0.10_0.02_180)] font-semibold text-sm hover:bg-[oklch(0.60_0.15_175)] transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 glow-teal-sm hover:scale-[1.03]"
+                style={{
+                  background: TEAL,
+                  color: BG_PRIMARY,
+                }}
               >
                 <Download size={16} />
                 Download CV
@@ -193,7 +201,8 @@ function HeroSection() {
                 href={hero.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[oklch(0.55_0.15_175_/_0.4)] text-[oklch(0.55_0.15_175)] font-semibold text-sm hover:bg-[oklch(0.55_0.15_175_/_0.1)] transition-colors"
+                className="glass-card inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm"
+                style={{ color: TEAL }}
               >
                 <Linkedin size={16} />
                 LinkedIn
@@ -202,7 +211,8 @@ function HeroSection() {
                 href={hero.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[oklch(0.55_0.15_175_/_0.4)] text-[oklch(0.55_0.15_175)] font-semibold text-sm hover:bg-[oklch(0.55_0.15_175_/_0.1)] transition-colors"
+                className="glass-card inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm"
+                style={{ color: TEAL }}
               >
                 <Github size={16} />
                 GitHub
@@ -211,28 +221,42 @@ function HeroSection() {
           </Reveal>
         </div>
 
-        {/* right: animated SVG map */}
+        {/* right: animated SVG map with glow */}
         <Reveal delay={200} className="hidden lg:block">
           <div className="relative w-full aspect-square max-w-md mx-auto">
+            <div
+              className="absolute inset-0 rounded-full opacity-40 blur-3xl pointer-events-none"
+              style={{
+                background: `radial-gradient(circle, oklch(0.55 0.15 175 / 0.2), transparent 70%)`,
+              }}
+            />
             <HeroMapSvg />
           </div>
         </Reveal>
       </div>
 
       {/* scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[oklch(0.55_0.15_175_/_0.5)]">
-        <span className="text-xs font-mono tracking-widest uppercase">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        <span
+          className="text-xs font-mono tracking-widest uppercase"
+          style={{ color: `oklch(0.55 0.15 175 / 0.5)` }}
+        >
           Scroll
         </span>
-        <div className="w-px h-8 bg-gradient-to-b from-[oklch(0.55_0.15_175_/_0.5)] to-transparent" />
+        <div
+          className="w-px h-8"
+          style={{
+            background: `linear-gradient(to bottom, oklch(0.55 0.15 175 / 0.5), transparent)`,
+          }}
+        />
       </div>
     </section>
   );
 }
 
-/* ═════════════════════════════════════════════════════════════════
-   ABOUT
-   ═════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   ABOUT — glass blockquote + frosted paragraph cards
+   ═══════════════════════════════════════════════════════════════ */
 function AboutSection() {
   return (
     <section
@@ -240,25 +264,39 @@ function AboutSection() {
       id="about"
     >
       <Reveal>
-        <h2 className="font-serif text-4xl md:text-5xl text-[oklch(0.22_0.015_50)] mb-12">
+        <h2
+          className="font-serif text-4xl md:text-5xl mb-12 scroll-slide-left"
+          style={{ color: TEXT_PRIMARY }}
+        >
           O mně
         </h2>
       </Reveal>
 
       <Reveal delay={100}>
-        <blockquote className="border-l-4 border-[oklch(0.55_0.15_175)] pl-6 mb-10">
-          <p className="font-serif italic text-xl md:text-2xl text-[oklch(0.35_0.015_50)] leading-relaxed">
+        <blockquote
+          className="glass-card rounded-2xl p-8 mb-10 border-l-4 scroll-reveal"
+          style={{ borderLeftColor: TEAL }}
+        >
+          <p
+            className="font-serif italic text-xl md:text-2xl leading-relaxed"
+            style={{ color: "oklch(0.80 0.01 180)" }}
+          >
             {about[0]}
           </p>
         </blockquote>
       </Reveal>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid md:grid-cols-2 gap-6">
         {about.slice(1).map((paragraph, i) => (
           <Reveal key={i} delay={150 + i * 100}>
-            <p className="text-[oklch(0.40_0.01_50)] leading-relaxed text-[15px]">
-              {paragraph}
-            </p>
+            <div className="glass-card rounded-xl p-6 h-full scroll-reveal">
+              <p
+                className="leading-relaxed text-[15px]"
+                style={{ color: TEXT_SECONDARY }}
+              >
+                {paragraph}
+              </p>
+            </div>
           </Reveal>
         ))}
       </div>
@@ -266,74 +304,92 @@ function AboutSection() {
   );
 }
 
-/* ═════════════════════════════════════════════════════════════════
-   EDUCATION - timeline with animated vertical path
-   ═════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   EDUCATION — glowing timeline dots + glass cards
+   ═══════════════════════════════════════════════════════════════ */
 function EducationSection() {
   return (
     <section
-      className="py-24 md:py-32 px-6 md:px-12 bg-[oklch(0.96_0.006_75)]"
+      className="py-24 md:py-32 px-6 md:px-12"
+      style={{ background: BG_SECONDARY }}
       id="education"
     >
       <div className="max-w-5xl mx-auto">
         <Reveal>
-          <div className="flex items-center gap-3 mb-14">
-            <GraduationCap size={28} className="text-[oklch(0.55_0.15_175)]" />
-            <h2 className="font-serif text-4xl md:text-5xl text-[oklch(0.22_0.015_50)]">
+          <div className="flex items-center gap-3 mb-14 scroll-slide-left">
+            <GraduationCap size={28} style={{ color: TEAL }} />
+            <h2
+              className="font-serif text-4xl md:text-5xl"
+              style={{ color: TEXT_PRIMARY }}
+            >
               Vzdělání
             </h2>
           </div>
         </Reveal>
 
         <div className="relative">
-          {/* animated vertical line */}
-          <div className="absolute left-[19px] md:left-[23px] top-0 bottom-0 w-px bg-[oklch(0.55_0.15_175_/_0.2)]">
-            <div
-              className="w-full bg-[oklch(0.55_0.15_175)] animate-[grow-line_2s_ease-out_forwards]"
-              style={{
-                height: "100%",
-                transformOrigin: "top",
-                animation: "none",
-              }}
-            />
-          </div>
+          {/* glowing vertical line */}
+          <div
+            className="absolute left-[19px] md:left-[23px] top-0 bottom-0 w-px"
+            style={{
+              background: `linear-gradient(to bottom, ${TEAL}, oklch(0.55 0.15 175 / 0.1))`,
+              boxShadow: `0 0 8px oklch(0.55 0.15 175 / 0.3)`,
+            }}
+          />
 
-          <div className="space-y-12">
+          <div className="space-y-10">
             {education.map((edu, i) => (
               <Reveal key={i} delay={i * 150}>
-                <div className="flex gap-6 md:gap-8">
-                  {/* dot on timeline */}
+                <div
+                  className={`flex gap-6 md:gap-8 ${i % 2 === 0 ? "scroll-slide-left" : "scroll-slide-right"}`}
+                >
+                  {/* glowing dot */}
                   <div className="relative flex-shrink-0">
-                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-[oklch(0.55_0.15_175)] bg-[oklch(0.96_0.006_75)] flex items-center justify-center z-10 relative">
-                      <div className="w-3 h-3 rounded-full bg-[oklch(0.55_0.15_175)]" />
+                    <div
+                      className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center z-10 relative glow-teal-sm"
+                      style={{
+                        border: `2px solid ${TEAL}`,
+                        background: BG_SECONDARY,
+                      }}
+                    >
+                      <div
+                        className="w-3 h-3 rounded-full"
+                        style={{ background: TEAL }}
+                      />
                     </div>
                   </div>
 
-                  {/* content card */}
-                  <div className="pb-2 flex-1">
+                  {/* glass content card */}
+                  <div className="glass-card rounded-xl p-6 flex-1">
                     <a
                       href={edu.institutionUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs font-mono tracking-wider uppercase text-[oklch(0.55_0.15_175)] hover:underline"
+                      className="text-xs font-mono tracking-wider uppercase hover:underline"
+                      style={{ color: TEAL }}
                     >
                       {edu.institution}
                     </a>
-                    <h3 className="font-serif text-xl md:text-2xl text-[oklch(0.22_0.015_50)] mt-1">
+                    <h3
+                      className="font-serif text-xl md:text-2xl mt-1"
+                      style={{ color: TEXT_PRIMARY }}
+                    >
                       {edu.degree}
                     </h3>
-                    <p className="text-sm text-[oklch(0.50_0.01_50)] mt-1">
+                    <p className="text-sm mt-1" style={{ color: TEXT_MUTED }}>
                       {edu.type} &middot; {edu.location}
                     </p>
                     <ul className="mt-4 space-y-1.5">
                       {edu.highlights.map((h, j) => (
                         <li
                           key={j}
-                          className="flex items-start gap-2 text-sm text-[oklch(0.40_0.01_50)]"
+                          className="flex items-start gap-2 text-sm"
+                          style={{ color: TEXT_SECONDARY }}
                         >
                           <ChevronRight
                             size={14}
-                            className="text-[oklch(0.55_0.15_175)] mt-0.5 flex-shrink-0"
+                            className="mt-0.5 flex-shrink-0"
+                            style={{ color: TEAL }}
                           />
                           {h}
                         </li>
@@ -350,19 +406,26 @@ function EducationSection() {
   );
 }
 
-/* ═════════════════════════════════════════════════════════════════
-   EXPERIENCE - hover-highlighted cards
-   ═════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   EXPERIENCE — glass cards with glowing accent bars
+   ═══════════════════════════════════════════════════════════════ */
 function ExperienceSection() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   return (
-    <section className="py-24 md:py-32 px-6 md:px-12" id="experience">
+    <section
+      className="py-24 md:py-32 px-6 md:px-12"
+      style={{ background: BG_PRIMARY }}
+      id="experience"
+    >
       <div className="max-w-5xl mx-auto">
         <Reveal>
-          <div className="flex items-center gap-3 mb-14">
-            <Briefcase size={28} className="text-[oklch(0.65_0.20_45)]" />
-            <h2 className="font-serif text-4xl md:text-5xl text-[oklch(0.22_0.015_50)]">
+          <div className="flex items-center gap-3 mb-14 scroll-slide-left">
+            <Briefcase size={28} style={{ color: "oklch(0.65 0.20 45)" }} />
+            <h2
+              className="font-serif text-4xl md:text-5xl"
+              style={{ color: TEXT_PRIMARY }}
+            >
               Zkušenosti
             </h2>
           </div>
@@ -374,44 +437,51 @@ function ExperienceSection() {
               <div
                 onMouseEnter={() => setHoveredIdx(i)}
                 onMouseLeave={() => setHoveredIdx(null)}
-                className="group relative rounded-xl border border-[oklch(0.90_0.008_75)] p-6 md:p-8 transition-all duration-300"
+                className="glass-card relative rounded-xl p-6 md:p-8 scroll-reveal"
                 style={{
-                  backgroundColor:
-                    hoveredIdx === i
-                      ? "oklch(0.55 0.15 175 / 0.04)"
-                      : "oklch(0.99 0.004 75)",
                   borderColor:
                     hoveredIdx === i ? "oklch(0.55 0.15 175 / 0.3)" : undefined,
                   transform:
                     hoveredIdx === i ? "translateX(8px)" : "translateX(0)",
+                  boxShadow:
+                    hoveredIdx === i
+                      ? "0 0 40px oklch(0.55 0.15 175 / 0.1)"
+                      : undefined,
                 }}
               >
-                {/* accent bar */}
+                {/* glowing accent bar */}
                 <div
-                  className="absolute left-0 top-4 bottom-4 w-1 rounded-full transition-all duration-300"
+                  className="absolute left-0 top-4 bottom-4 w-1 rounded-full transition-all duration-400"
                   style={{
-                    backgroundColor:
-                      i % 2 === 0
-                        ? "oklch(0.55 0.15 175)"
-                        : "oklch(0.65 0.20 45)",
-                    opacity: hoveredIdx === i ? 1 : 0.3,
+                    backgroundColor: i % 2 === 0 ? TEAL : "oklch(0.65 0.20 45)",
+                    opacity: hoveredIdx === i ? 1 : 0.4,
+                    boxShadow:
+                      hoveredIdx === i
+                        ? `0 0 12px ${i % 2 === 0 ? "oklch(0.55 0.15 175 / 0.5)" : "oklch(0.65 0.20 45 / 0.5)"}`
+                        : "none",
                   }}
                 />
 
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-4">
                   <div>
-                    <h3 className="font-serif text-xl text-[oklch(0.22_0.015_50)]">
+                    <h3
+                      className="font-serif text-xl"
+                      style={{ color: TEXT_PRIMARY }}
+                    >
                       {exp.role}
                     </h3>
-                    <p className="text-sm font-medium text-[oklch(0.55_0.15_175)]">
+                    <p className="text-sm font-medium" style={{ color: TEAL }}>
                       {exp.company}
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-xs font-mono text-[oklch(0.50_0.01_50)]">
+                    <p
+                      className="text-xs font-mono"
+                      style={{ color: TEXT_MUTED }}
+                    >
                       {exp.period}
                     </p>
-                    <p className="text-xs text-[oklch(0.55_0.01_50)]">
+                    <p className="text-xs" style={{ color: TEXT_MUTED }}>
                       {exp.location}
                     </p>
                   </div>
@@ -421,11 +491,13 @@ function ExperienceSection() {
                   {exp.highlights.map((h, j) => (
                     <li
                       key={j}
-                      className="flex items-start gap-2 text-sm text-[oklch(0.40_0.01_50)]"
+                      className="flex items-start gap-2 text-sm"
+                      style={{ color: TEXT_SECONDARY }}
                     >
                       <ChevronRight
                         size={14}
-                        className="text-[oklch(0.55_0.15_175_/_0.6)] mt-0.5 flex-shrink-0"
+                        className="mt-0.5 flex-shrink-0"
+                        style={{ color: `oklch(0.55 0.15 175 / 0.6)` }}
                       />
                       {h}
                     </li>
@@ -440,21 +512,25 @@ function ExperienceSection() {
   );
 }
 
-/* ═════════════════════════════════════════════════════════════════
-   PROJECTS - 3D tilt cards
-   ═════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   PROJECTS — tilt cards with glass effect
+   ═══════════════════════════════════════════════════════════════ */
 function ProjectsSection() {
   return (
     <section
-      className="py-24 md:py-32 px-6 md:px-12 bg-[oklch(0.12_0.02_180)]"
+      className="py-24 md:py-32 px-6 md:px-12"
+      style={{ background: BG_SECONDARY }}
       id="projects"
     >
       <div className="max-w-6xl mx-auto">
         <Reveal>
-          <h2 className="font-serif text-4xl md:text-5xl text-[oklch(0.95_0.005_80)] mb-4">
+          <h2
+            className="font-serif text-4xl md:text-5xl mb-4 scroll-slide-left"
+            style={{ color: TEXT_PRIMARY }}
+          >
             Projekty
           </h2>
-          <p className="text-[oklch(0.55_0.01_180)] mb-14 max-w-xl">
+          <p className="mb-14 max-w-xl" style={{ color: TEXT_MUTED }}>
             Vybrané projekty z oblasti WebGIS, prostorových databází, computer
             vision a IoT.
           </p>
@@ -463,12 +539,20 @@ function ProjectsSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, i) => (
             <Reveal key={i} delay={i * 80}>
-              <TiltCard className="h-full">
-                <div className="h-full rounded-xl border border-[oklch(0.55_0.15_175_/_0.15)] bg-[oklch(0.14_0.02_180)] p-6 flex flex-col group hover:border-[oklch(0.55_0.15_175_/_0.4)] transition-colors duration-300">
-                  <h3 className="font-serif text-lg text-[oklch(0.90_0.005_80)] mb-2 group-hover:text-[oklch(0.55_0.15_175)] transition-colors">
-                    {project.title}
+              <TiltCard className="h-full scroll-reveal">
+                <div className="glass-card h-full rounded-xl p-6 flex flex-col group">
+                  <h3
+                    className="font-serif text-lg mb-2 transition-colors"
+                    style={{ color: "oklch(0.90 0.005 80)" }}
+                  >
+                    <span className="group-hover:text-[oklch(0.55_0.15_175)]">
+                      {project.title}
+                    </span>
                   </h3>
-                  <p className="text-sm text-[oklch(0.50_0.01_180)] mb-4 leading-relaxed flex-1">
+                  <p
+                    className="text-sm mb-4 leading-relaxed flex-1"
+                    style={{ color: TEXT_MUTED }}
+                  >
                     {project.description}
                   </p>
 
@@ -476,9 +560,10 @@ function ProjectsSection() {
                     {project.features.map((f, j) => (
                       <li
                         key={j}
-                        className="text-xs text-[oklch(0.45_0.01_180)] flex items-start gap-1.5"
+                        className="text-xs flex items-start gap-1.5"
+                        style={{ color: TEXT_MUTED }}
                       >
-                        <span className="text-[oklch(0.55_0.15_175)] mt-0.5">
+                        <span style={{ color: TEAL }} className="mt-0.5">
                           &#9656;
                         </span>
                         {f}
@@ -490,7 +575,12 @@ function ProjectsSection() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-0.5 text-[10px] font-mono rounded-full bg-[oklch(0.55_0.15_175_/_0.12)] text-[oklch(0.55_0.15_175)] border border-[oklch(0.55_0.15_175_/_0.2)]"
+                        className="px-2 py-0.5 text-[10px] font-mono rounded-full"
+                        style={{
+                          background: "oklch(0.55 0.15 175 / 0.1)",
+                          color: TEAL,
+                          border: "1px solid oklch(0.55 0.15 175 / 0.2)",
+                        }}
                       >
                         {tag}
                       </span>
@@ -501,7 +591,8 @@ function ProjectsSection() {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm text-[oklch(0.55_0.15_175)] hover:text-[oklch(0.65_0.15_175)] transition-colors mt-auto"
+                    className="inline-flex items-center gap-1.5 text-sm transition-colors mt-auto hover:brightness-125"
+                    style={{ color: TEAL }}
                   >
                     <ExternalLink size={14} />
                     {project.linkLabel}
@@ -516,21 +607,25 @@ function ProjectsSection() {
   );
 }
 
-/* ═════════════════════════════════════════════════════════════════
-   SKILLS - animated bars data-viz style
-   ═════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   SKILLS — animated bars with glow
+   ═══════════════════════════════════════════════════════════════ */
 function SkillsSection() {
   return (
     <section
-      className="py-24 md:py-32 px-6 md:px-12 bg-[oklch(0.10_0.02_180)]"
+      className="py-24 md:py-32 px-6 md:px-12"
+      style={{ background: BG_PRIMARY }}
       id="skills"
     >
       <div className="max-w-6xl mx-auto">
         <Reveal>
-          <h2 className="font-serif text-4xl md:text-5xl text-[oklch(0.95_0.005_80)] mb-4">
+          <h2
+            className="font-serif text-4xl md:text-5xl mb-4 scroll-slide-left"
+            style={{ color: TEXT_PRIMARY }}
+          >
             Dovednosti
           </h2>
-          <p className="text-[oklch(0.55_0.01_180)] mb-14 max-w-xl">
+          <p className="mb-14 max-w-xl" style={{ color: TEXT_MUTED }}>
             Technické kompetence vizualizované jako data dashboard.
           </p>
         </Reveal>
@@ -538,8 +633,14 @@ function SkillsSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
           {skills.map((category, catIdx) => (
             <Reveal key={catIdx} delay={catIdx * 80}>
-              <div>
-                <h3 className="text-sm font-mono tracking-wider uppercase text-[oklch(0.55_0.15_175)] mb-5 pb-2 border-b border-[oklch(0.55_0.15_175_/_0.2)]">
+              <div className="scroll-reveal">
+                <h3
+                  className="text-sm font-mono tracking-wider uppercase mb-5 pb-2"
+                  style={{
+                    color: TEAL,
+                    borderBottom: `1px solid oklch(0.55 0.15 175 / 0.2)`,
+                  }}
+                >
                   {category.name}
                 </h3>
                 <div className="space-y-3">
@@ -561,17 +662,24 @@ function SkillsSection() {
   );
 }
 
-/* ═════════════════════════════════════════════════════════════════
-   CERTIFICATIONS
-   ═════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   CERTIFICATIONS — glass cards with glow accent
+   ═══════════════════════════════════════════════════════════════ */
 function CertificationsSection() {
   return (
-    <section className="py-24 md:py-32 px-6 md:px-12" id="certifications">
+    <section
+      className="py-24 md:py-32 px-6 md:px-12"
+      style={{ background: BG_SECONDARY }}
+      id="certifications"
+    >
       <div className="max-w-5xl mx-auto">
         <Reveal>
-          <div className="flex items-center gap-3 mb-14">
-            <Award size={28} className="text-[oklch(0.55_0.15_175)]" />
-            <h2 className="font-serif text-4xl md:text-5xl text-[oklch(0.22_0.015_50)]">
+          <div className="flex items-center gap-3 mb-14 scroll-slide-left">
+            <Award size={28} style={{ color: TEAL }} />
+            <h2
+              className="font-serif text-4xl md:text-5xl"
+              style={{ color: TEXT_PRIMARY }}
+            >
               Certifikace
             </h2>
           </div>
@@ -580,17 +688,29 @@ function CertificationsSection() {
         <div className="grid md:grid-cols-2 gap-6">
           {certifications.map((cert, i) => (
             <Reveal key={i} delay={i * 120}>
-              <div className="rounded-xl border border-[oklch(0.90_0.008_75)] p-6 hover:shadow-lg transition-shadow duration-300 bg-white relative overflow-hidden group">
-                {/* teal top accent */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-[oklch(0.55_0.15_175)] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+              <div className="glass-card rounded-xl p-6 relative overflow-hidden group scroll-reveal">
+                {/* glowing top accent on hover */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
+                  style={{
+                    background: `linear-gradient(90deg, ${TEAL}, oklch(0.65 0.12 175))`,
+                    boxShadow: `0 0 10px oklch(0.55 0.15 175 / 0.5)`,
+                  }}
+                />
 
-                <p className="text-xs font-mono text-[oklch(0.55_0.15_175)] mb-1">
+                <p className="text-xs font-mono mb-1" style={{ color: TEAL }}>
                   {cert.issuer} &middot; {cert.date}
                 </p>
-                <h3 className="font-serif text-lg text-[oklch(0.22_0.015_50)] mb-3">
+                <h3
+                  className="font-serif text-lg mb-3"
+                  style={{ color: TEXT_PRIMARY }}
+                >
                   {cert.name}
                 </h3>
-                <p className="text-sm text-[oklch(0.45_0.01_50)] leading-relaxed">
+                <p
+                  className="text-sm leading-relaxed"
+                  style={{ color: TEXT_SECONDARY }}
+                >
                   {cert.description}
                 </p>
               </div>
@@ -602,18 +722,22 @@ function CertificationsSection() {
   );
 }
 
-/* ═════════════════════════════════════════════════════════════════
-   SERVICES - numbered blocks, alternating
-   ═════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   SERVICES — glass number blocks with glow
+   ═══════════════════════════════════════════════════════════════ */
 function ServicesSection() {
   return (
     <section
-      className="py-24 md:py-32 px-6 md:px-12 bg-[oklch(0.96_0.006_75)]"
+      className="py-24 md:py-32 px-6 md:px-12"
+      style={{ background: BG_PRIMARY }}
       id="services"
     >
       <div className="max-w-5xl mx-auto">
         <Reveal>
-          <h2 className="font-serif text-4xl md:text-5xl text-[oklch(0.22_0.015_50)] mb-14">
+          <h2
+            className="font-serif text-4xl md:text-5xl mb-14 scroll-slide-left"
+            style={{ color: TEXT_PRIMARY }}
+          >
             Služby
           </h2>
         </Reveal>
@@ -624,31 +748,46 @@ function ServicesSection() {
               <div
                 className={`flex flex-col md:flex-row gap-6 md:gap-10 items-start ${
                   i % 2 === 1 ? "md:flex-row-reverse" : ""
-                }`}
+                } ${i % 2 === 0 ? "scroll-slide-left" : "scroll-slide-right"}`}
               >
-                {/* number block */}
-                <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-xl bg-[oklch(0.55_0.15_175_/_0.1)] border border-[oklch(0.55_0.15_175_/_0.2)] flex items-center justify-center">
-                  <span className="font-serif text-2xl md:text-3xl text-[oklch(0.55_0.15_175)]">
+                {/* glowing number block */}
+                <div
+                  className="glass-card flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center group-hover:glow-teal"
+                  style={{
+                    boxShadow: "0 0 20px oklch(0.55 0.15 175 / 0.08)",
+                  }}
+                >
+                  <span
+                    className="font-serif text-2xl md:text-3xl"
+                    style={{ color: TEAL }}
+                  >
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
 
                 {/* content */}
                 <div className="flex-1">
-                  <h3 className="font-serif text-xl md:text-2xl text-[oklch(0.22_0.015_50)] mb-1">
+                  <h3
+                    className="font-serif text-xl md:text-2xl mb-1"
+                    style={{ color: TEXT_PRIMARY }}
+                  >
                     {service.title}
                   </h3>
-                  <p className="text-sm italic text-[oklch(0.55_0.15_175)] mb-3">
+                  <p className="text-sm italic mb-3" style={{ color: TEAL }}>
                     {service.question}
                   </p>
-                  <p className="text-sm text-[oklch(0.40_0.01_50)] leading-relaxed mb-4">
+                  <p
+                    className="text-sm leading-relaxed mb-4"
+                    style={{ color: TEXT_SECONDARY }}
+                  >
                     {service.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {service.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2.5 py-1 text-xs font-mono rounded-full bg-[oklch(0.55_0.15_175_/_0.08)] text-[oklch(0.55_0.15_175)] border border-[oklch(0.55_0.15_175_/_0.15)]"
+                        className="glass-card-subtle px-2.5 py-1 text-xs font-mono rounded-full"
+                        style={{ color: TEAL }}
                       >
                         {tag}
                       </span>
@@ -664,22 +803,29 @@ function ServicesSection() {
   );
 }
 
-/* ═════════════════════════════════════════════════════════════════
-   CONTACT - dramatic dark section with crosshair cursor
-   ═════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   CONTACT — crosshair cursor + glowing contact cards
+   ═══════════════════════════════════════════════════════════════ */
 function ContactSection() {
   return (
-    <CrosshairCursor className="bg-[oklch(0.10_0.02_180)]" id="contact">
+    <CrosshairCursor
+      className=""
+      style={{ background: BG_SECONDARY }}
+      id="contact"
+    >
       <section className="py-24 md:py-32 px-6 md:px-12">
         <div className="max-w-5xl mx-auto">
           <Reveal>
-            <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl text-[oklch(0.95_0.005_80)] mb-6">
+            <h2
+              className="font-serif text-5xl md:text-6xl lg:text-7xl mb-6 scroll-slide-left"
+              style={{ color: TEXT_PRIMARY }}
+            >
               Kontakt
             </h2>
           </Reveal>
 
           <Reveal delay={100}>
-            <p className="text-[oklch(0.55_0.01_180)] mb-14 max-w-lg text-lg">
+            <p className="mb-14 max-w-lg text-lg" style={{ color: TEXT_MUTED }}>
               Zaujala vás moje práce? Ozvěte se a pojďme spolupracovat.
             </p>
           </Reveal>
@@ -726,19 +872,28 @@ function ContactSection() {
                       ? "noopener noreferrer"
                       : undefined
                   }
-                  className="group flex items-center gap-4 rounded-xl border border-[oklch(0.55_0.15_175_/_0.15)] bg-[oklch(0.55_0.15_175_/_0.05)] p-5 hover:border-[oklch(0.55_0.15_175_/_0.4)] hover:bg-[oklch(0.55_0.15_175_/_0.1)] transition-all duration-300"
+                  className="glass-card group flex items-center gap-4 rounded-xl p-5 scroll-reveal"
                 >
-                  <div className="w-12 h-12 rounded-lg bg-[oklch(0.55_0.15_175_/_0.15)] flex items-center justify-center group-hover:bg-[oklch(0.55_0.15_175_/_0.25)] transition-colors">
-                    <item.icon
-                      size={20}
-                      className="text-[oklch(0.55_0.15_175)]"
-                    />
+                  <div
+                    className="w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300"
+                    style={{
+                      background: "oklch(0.55 0.15 175 / 0.12)",
+                      boxShadow: "none",
+                    }}
+                  >
+                    <item.icon size={20} style={{ color: TEAL }} />
                   </div>
                   <div>
-                    <p className="text-xs font-mono text-[oklch(0.50_0.01_180)]">
+                    <p
+                      className="text-xs font-mono"
+                      style={{ color: TEXT_MUTED }}
+                    >
                       {item.label}
                     </p>
-                    <p className="text-sm text-[oklch(0.85_0.01_180)] group-hover:text-[oklch(0.55_0.15_175)] transition-colors">
+                    <p
+                      className="text-sm transition-colors group-hover:text-[oklch(0.55_0.15_175)]"
+                      style={{ color: "oklch(0.85 0.01 180)" }}
+                    >
                       {item.value}
                     </p>
                   </div>
@@ -749,11 +904,20 @@ function ContactSection() {
 
           {/* pulsing location dot */}
           <Reveal delay={600}>
-            <div className="flex items-center gap-3 mt-14 text-[oklch(0.50_0.01_180)]">
+            <div
+              className="flex items-center gap-3 mt-14"
+              style={{ color: TEXT_MUTED }}
+            >
               <div className="relative">
-                <MapPin size={18} className="text-[oklch(0.55_0.15_175)]" />
-                <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[oklch(0.55_0.15_175)]">
-                  <div className="absolute inset-0 rounded-full bg-[oklch(0.55_0.15_175)] animate-ping" />
+                <MapPin size={18} style={{ color: TEAL }} />
+                <div
+                  className="absolute -top-1 -right-1 w-3 h-3 rounded-full"
+                  style={{ background: TEAL }}
+                >
+                  <div
+                    className="absolute inset-0 rounded-full animate-ping"
+                    style={{ background: TEAL }}
+                  />
                 </div>
               </div>
               <span className="text-sm font-mono">
@@ -767,15 +931,24 @@ function ContactSection() {
   );
 }
 
-/* ═════════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════
    FOOTER
-   ═════════════════════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════════════════ */
 function FooterSection() {
   return (
-    <footer className="bg-[oklch(0.08_0.02_180)] border-t border-[oklch(0.55_0.15_175_/_0.1)] py-10 px-6 md:px-12">
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[oklch(0.40_0.01_180)]">
+    <footer
+      className="py-10 px-6 md:px-12"
+      style={{
+        background: "oklch(0.06 0.02 180)",
+        borderTop: `1px solid oklch(0.55 0.15 175 / 0.08)`,
+      }}
+    >
+      <div
+        className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs"
+        style={{ color: TEXT_MUTED }}
+      >
         <div className="text-center md:text-left">
-          <p className="font-medium text-[oklch(0.60_0.01_180)]">
+          <p className="font-medium" style={{ color: TEXT_SECONDARY }}>
             {footer.name}
           </p>
           <p>
@@ -783,7 +956,7 @@ function FooterSection() {
           </p>
           <p>IČO: {footer.ico}</p>
         </div>
-        <p className="font-mono text-[oklch(0.35_0.01_180)]">
+        <p className="font-mono" style={{ color: "oklch(0.35 0.01 180)" }}>
           {footer.copyright}
         </p>
       </div>
