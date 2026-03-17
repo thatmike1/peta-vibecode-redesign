@@ -13,7 +13,6 @@ import {
   hero,
 } from "@/data/content";
 import {
-  ExternalLink,
   Mail,
   Phone,
   Linkedin,
