@@ -1,4 +1,4 @@
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 import { createNoise2D } from "simplex-noise";
@@ -11,8 +11,10 @@ const vertexShader = `
 
   void main() {
     vec3 pos = position;
-    pos.z += sin(pos.x * 0.5 + uTime * 0.4) * 0.05;
-    pos.z += cos(pos.y * 0.4 + uTime * 0.3) * 0.03;
+
+    // subtle breathing animation
+    pos.z += sin(pos.x * 0.3 + uTime * 0.25) * 0.06;
+    pos.z += cos(pos.y * 0.25 + uTime * 0.2) * 0.04;
 
     vElevation = pos.z;
     vNormal = normalize(normalMatrix * normal);
@@ -22,63 +24,74 @@ const vertexShader = `
 `;
 
 const fragmentShader = `
+  uniform float uTime;
   varying float vElevation;
   varying vec3 vNormal;
   varying vec2 vUv;
 
-  vec3 topoColor(float h) {
-    float t = clamp((h + 2.5) / 5.0, 0.0, 1.0);
-
-    vec3 deep   = vec3(0.04, 0.20, 0.16);
-    vec3 forest = vec3(0.06, 0.35, 0.24);
-    vec3 meadow = vec3(0.22, 0.48, 0.22);
-    vec3 earth  = vec3(0.48, 0.40, 0.26);
-    vec3 rock   = vec3(0.64, 0.56, 0.44);
-    vec3 snow   = vec3(0.92, 0.90, 0.86);
-
-    vec3 c = deep;
-    c = mix(c, forest, smoothstep(0.0,  0.18, t));
-    c = mix(c, meadow, smoothstep(0.18, 0.36, t));
-    c = mix(c, earth,  smoothstep(0.36, 0.52, t));
-    c = mix(c, rock,   smoothstep(0.52, 0.70, t));
-    c = mix(c, snow,   smoothstep(0.70, 1.0,  t));
-    return c;
-  }
-
   void main() {
-    vec3 color = topoColor(vElevation);
+    float h = clamp((vElevation + 3.0) / 6.5, 0.0, 1.0);
+
+    // topo color ramp — muted, dark, map-like
+    vec3 deep    = vec3(0.035, 0.10, 0.09);
+    vec3 lowland = vec3(0.05, 0.16, 0.12);
+    vec3 forest  = vec3(0.07, 0.22, 0.15);
+    vec3 meadow  = vec3(0.14, 0.30, 0.16);
+    vec3 earth   = vec3(0.30, 0.26, 0.18);
+    vec3 rock    = vec3(0.42, 0.38, 0.30);
+    vec3 peak    = vec3(0.58, 0.54, 0.46);
+
+    vec3 color = deep;
+    color = mix(color, lowland, smoothstep(0.0,  0.12, h));
+    color = mix(color, forest,  smoothstep(0.12, 0.28, h));
+    color = mix(color, meadow,  smoothstep(0.28, 0.45, h));
+    color = mix(color, earth,   smoothstep(0.45, 0.60, h));
+    color = mix(color, rock,    smoothstep(0.60, 0.78, h));
+    color = mix(color, peak,    smoothstep(0.78, 1.0,  h));
 
     // minor contour lines
-    float interval = 0.3;
+    float interval = 0.25;
     float contour = abs(fract(vElevation / interval + 0.5) - 0.5) * interval;
-    float line = 1.0 - smoothstep(0.005, 0.016, contour);
-    color = mix(color, color * 0.35, line * 0.45);
+    float line = 1.0 - smoothstep(0.003, 0.014, contour);
+    color = mix(color, color * 0.5, line * 0.35);
 
-    // major contour lines (every 5th)
-    float majorInterval = 1.5;
+    // major contour lines — bolder, with subtle highlight
+    float majorInterval = 1.25;
     float major = abs(fract(vElevation / majorInterval + 0.5) - 0.5) * majorInterval;
-    float majorLine = 1.0 - smoothstep(0.008, 0.025, major);
-    color = mix(color, color * 0.15, majorLine * 0.65);
+    float majorLine = 1.0 - smoothstep(0.006, 0.022, major);
+    color = mix(color, vec3(0.7, 0.65, 0.5), majorLine * 0.25);
 
-    // directional lighting
-    vec3 lightDir = normalize(vec3(0.7, 0.5, 1.5));
+    // hillshade — NW light source
+    vec3 lightDir = normalize(vec3(-0.5, 0.7, 1.2));
     float diff = max(dot(vNormal, lightDir), 0.0);
-    color *= 0.40 + diff * 0.60;
+    float ambient = 0.35;
+    color *= ambient + diff * (1.0 - ambient);
 
-    // edge fade so terrain bleeds into background
-    float edge = smoothstep(0.0, 0.14, vUv.x) * smoothstep(1.0, 0.86, vUv.x)
-               * smoothstep(0.0, 0.20, vUv.y) * smoothstep(1.0, 0.80, vUv.y);
+    // subtle highlight on ridges
+    float ridge = pow(max(dot(vNormal, vec3(0.0, 0.0, 1.0)), 0.0), 8.0);
+    color += vec3(0.15, 0.14, 0.10) * ridge * 0.3;
 
-    gl_FragColor = vec4(color, edge);
+    // vignette — darken edges
+    vec2 center = vUv - 0.5;
+    float vignette = 1.0 - dot(center, center) * 1.6;
+    vignette = clamp(vignette, 0.0, 1.0);
+    color *= 0.5 + vignette * 0.5;
+
+    gl_FragColor = vec4(color, 1.0);
   }
 `;
+
+/** the background color the canvas clears to — matches the terrain's deep color */
+const BG_COLOR = new THREE.Color(0.035, 0.1, 0.09);
 
 function TerrainMesh() {
   const meshRef = useRef<THREE.Mesh>(null);
   const mouse = useRef({ x: 0, y: 0, tx: 0, ty: 0 });
+  const { camera } = useThree();
 
   const { geometry, material } = useMemo(() => {
-    const geo = new THREE.PlaneGeometry(24, 16, 200, 140);
+    // oversized plane so edges never show even with camera panning
+    const geo = new THREE.PlaneGeometry(40, 30, 280, 200);
     const noise = createNoise2D();
     const pos = geo.attributes.position;
 
@@ -87,11 +100,11 @@ function TerrainMesh() {
       const y = pos.getY(i);
 
       let h = 0;
-      h += noise(x * 0.1, y * 0.1) * 2.4;
-      h += noise(x * 0.22, y * 0.22) * 1.2;
-      h += noise(x * 0.45, y * 0.45) * 0.6;
-      h += noise(x * 0.9, y * 0.9) * 0.25;
-      h += noise(x * 1.8, y * 1.8) * 0.08;
+      h += noise(x * 0.08, y * 0.08) * 2.8;
+      h += noise(x * 0.18, y * 0.18) * 1.4;
+      h += noise(x * 0.38, y * 0.38) * 0.7;
+      h += noise(x * 0.75, y * 0.75) * 0.3;
+      h += noise(x * 1.5, y * 1.5) * 0.1;
 
       pos.setZ(i, h);
     }
@@ -102,8 +115,8 @@ function TerrainMesh() {
       vertexShader,
       fragmentShader,
       uniforms: { uTime: { value: 0 } },
-      transparent: true,
-      side: THREE.DoubleSide,
+      transparent: false,
+      side: THREE.FrontSide,
     });
 
     return { geometry: geo, material: mat };
@@ -121,12 +134,21 @@ function TerrainMesh() {
   useFrame(({ clock }, delta) => {
     if (!meshRef.current) return;
 
-    mouse.current.x += (mouse.current.tx - mouse.current.x) * delta * 1.8;
-    mouse.current.y += (mouse.current.ty - mouse.current.y) * delta * 1.8;
+    const lerp = 1 - Math.pow(0.04, delta); // frame-rate independent smoothing
+    mouse.current.x += (mouse.current.tx - mouse.current.x) * lerp;
+    mouse.current.y += (mouse.current.ty - mouse.current.y) * lerp;
 
-    meshRef.current.rotation.x = -Math.PI / 2.5 + mouse.current.y * 0.06;
-    meshRef.current.rotation.z =
-      mouse.current.x * 0.04 + clock.elapsedTime * 0.012;
+    // parallax: pan camera position instead of rotating mesh
+    // this feels like dragging a map under a viewport
+    camera.position.x = mouse.current.x * 1.8;
+    camera.position.y = mouse.current.y * 1.2;
+
+    // very slight tilt toward cursor for depth feel
+    meshRef.current.rotation.x = mouse.current.y * 0.04;
+    meshRef.current.rotation.y = -mouse.current.x * 0.04;
+
+    // slow idle drift
+    meshRef.current.rotation.z = clock.elapsedTime * 0.006;
 
     material.uniforms.uTime.value = clock.elapsedTime;
   });
@@ -138,14 +160,15 @@ export function TerrainCanvas() {
   return (
     <div className="absolute inset-0">
       <Canvas
-        camera={{ position: [0, -4, 10], fov: 48 }}
+        camera={{ position: [0, 0, 12], fov: 50 }}
         gl={{
-          alpha: true,
           antialias: true,
           powerPreference: "high-performance",
         }}
         dpr={[1, 1.5]}
-        style={{ background: "transparent" }}
+        onCreated={({ gl }) => {
+          gl.setClearColor(BG_COLOR);
+        }}
       >
         <TerrainMesh />
       </Canvas>

@@ -21,8 +21,12 @@ export default function V2TerrainPage() {
       <Navigation />
       <main>
         {/* ── WebGL Terrain Hero ── */}
-        <section className="relative min-h-screen overflow-hidden flex items-center bg-[oklch(0.09_0.025_165)]">
+        <section className="relative min-h-screen overflow-hidden flex items-center">
           <TerrainCanvas />
+
+          {/* gradient overlay — readable text over opaque terrain */}
+          <div className="absolute inset-0 z-[1] bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
+          <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[oklch(0.09_0.025_165)] via-transparent to-black/30" />
 
           <div className="relative z-10 max-w-6xl mx-auto px-6 w-full py-32">
             <div className="max-w-2xl">

@@ -28,7 +28,7 @@ export function Navigation() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled
-          ? "bg-background/90 backdrop-blur-md border-b border-border shadow-sm"
+          ? "bg-black/70 backdrop-blur-xl border-b border-white/5"
           : "bg-transparent",
       )}
     >
@@ -37,7 +37,7 @@ export function Navigation() {
           href="#"
           className={cn(
             "font-serif text-xl transition-colors duration-300",
-            scrolled ? "text-foreground" : "text-hero-text",
+            scrolled ? "text-white/90" : "text-hero-text",
           )}
         >
           PM
@@ -51,7 +51,7 @@ export function Navigation() {
               className={cn(
                 "text-[13px] font-medium tracking-wide transition-colors duration-300",
                 scrolled
-                  ? "text-muted-foreground hover:text-foreground"
+                  ? "text-white/50 hover:text-white"
                   : "text-hero-text/60 hover:text-hero-text",
               )}
             >
@@ -65,7 +65,7 @@ export function Navigation() {
             className={cn(
               "inline-flex items-center gap-1.5 text-[13px] font-medium px-4 py-1.5 rounded-full border transition-all duration-300",
               scrolled
-                ? "border-topo/40 text-topo hover:bg-topo hover:text-primary-foreground"
+                ? "border-white/20 text-white/60 hover:bg-white/10 hover:text-white"
                 : "border-hero-text/25 text-hero-text/70 hover:border-hero-text/50 hover:text-hero-text",
             )}
           >
@@ -78,7 +78,7 @@ export function Navigation() {
           onClick={() => setMobileOpen(!mobileOpen)}
           className={cn(
             "lg:hidden p-2 transition-colors",
-            scrolled ? "text-foreground" : "text-hero-text",
+            scrolled ? "text-white/90" : "text-hero-text",
           )}
         >
           {mobileOpen ? (
@@ -95,13 +95,13 @@ export function Navigation() {
           mobileOpen ? "max-h-96 border-b border-border" : "max-h-0",
         )}
       >
-        <div className="bg-background/95 backdrop-blur-md px-6 py-4 space-y-3">
+        <div className="bg-black/90 backdrop-blur-xl px-6 py-4 space-y-3">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={() => setMobileOpen(false)}
-              className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="block text-sm text-white/50 hover:text-white transition-colors"
             >
               {item.label}
             </a>
@@ -110,7 +110,7 @@ export function Navigation() {
             href="https://petrmikeska.cz/assets/resume/Petr_Mikeska_CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-topo font-medium"
+            className="inline-flex items-center gap-1.5 text-sm text-[oklch(0.55_0.18_160)] font-medium"
           >
             <Download className="w-3.5 h-3.5" />
             Životopis
