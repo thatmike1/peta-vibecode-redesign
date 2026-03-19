@@ -62,7 +62,7 @@ export const hero = {
     "#computervision",
   ],
   coordinates: "49.5167°N, 18.3333°E",
-  photo: "https://petrmikeska.cz/assets/img/passport.webp",
+  photo: "/passport.webp",
   linkedin: "https://www.linkedin.com/in/petr-mikeska-b25669262/",
   github: "https://github.com/metrpikeska",
   cvUrl: "https://petrmikeska.cz/assets/resume/Petr_Mikeska_CV.pdf",
