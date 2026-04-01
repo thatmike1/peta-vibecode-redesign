@@ -51,7 +51,7 @@ export const about: string[] = [
   "I actively work in traditional GIS environments as well, primarily QGIS, ArcGIS Pro, and ArcGIS Online. I use them for spatial analyses, raster and vector data processing, cartographic outputs, and publishing map layers and web applications.",
   "I specialize in spatial database design, web mapping application development, geodata processing automation, and Python-based analytical workflows. I also work with satellite and raster data processing and applying computer vision for image and video analysis.",
   "I work on projects ranging from WebGIS applications with real-time IoT data and backends for spatial queries, to AI-based object detection from video. My long-term focus is connecting GIS, development, and data analytics into functional geodata solutions.",
-  "Outside of technology, I have a strong connection to the mountains and sports. I'm from the Beskydy region, work as a snowboard instructor in winter, and in my free time I enjoy hiking, boxing, and music.",
+  "Outside of technology, I have a strong connection to the mountains and sports. I'm from the Beskydy region, work as a snowboard instructor in winter, and in my free time I enjoy hiking, boxing, and music. I also collect music on CD and vinyl — you can find my collection on Discogs.",
 ];
 
 export const education: Education[] = [

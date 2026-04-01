@@ -74,7 +74,7 @@ export const about = [
   "Současně aktivně pracuji i v klasickém GIS prostředí, zejména v QGIS, ArcGIS Pro a ArcGIS Online. Využívám je pro prostorové analýzy, práci s rastrovými a vektorovými daty, kartografické výstupy i publikaci mapových vrstev a webových aplikací.",
   "Specializuji se na návrh prostorových databází, vývoj webových mapových aplikací, automatizaci zpracování geodat a analytické workflow v Pythonu. Věnuji se také zpracování satelitních a rastrových dat a využití computer vision pro analýzu obrazu a videa.",
   "Pracuji na projektech od WebGIS aplikací s real-time IoT daty přes backendy pro prostorové dotazy až po AI detekci objektů z videa. Dlouhodobě se zaměřuji na propojování GIS, vývoje a datové analytiky do funkčních geodatových řešení.",
-  "Mimo technologie mám blízko k horám a sportu. Pocházím z Beskyd, v zimě působím jako instruktor snowboardingu a ve volném čase se věnuji turistice, boxu a hudbě.",
+  "Mimo technologie mám blízko k horám a sportu. Pocházím z Beskyd, v zimě působím jako instruktor snowboardingu a ve volném čase se věnuji turistice, boxu a hudbě. Rád sbírám hudbu na CD a vinylech — mou sbírku najdete na Discogsу.",
 ];
 
 export const education: Education[] = [

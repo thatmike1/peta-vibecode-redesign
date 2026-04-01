@@ -4,7 +4,7 @@ import { Menu, X, Download } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
 import { useContent } from "@/hooks/use-content";
 
-function LangToggle({ scrolled }: { scrolled: boolean }) {
+function LangToggle(_: { scrolled: boolean }) {
   const { lang, toggle } = useLanguage();
   const [flipping, setFlipping] = useState(false);
 
@@ -19,10 +19,7 @@ function LangToggle({ scrolled }: { scrolled: boolean }) {
       onAnimationEnd={() => setFlipping(false)}
       title={lang === "cs" ? "Switch to English" : "Přepnout do češtiny"}
       className={cn(
-        "text-[11px] font-semibold tracking-wider w-9 h-9 flex items-center justify-center rounded-full border transition-all duration-300 hover:scale-110",
-        scrolled
-          ? "border-white/15 hover:border-white/30"
-          : "border-hero-text/15 hover:border-hero-text/30",
+        "text-[11px] font-semibold tracking-wider w-9 h-9 flex items-center justify-center rounded-full transition-all duration-300 hover:scale-110 bg-white text-black border border-white/20 hover:bg-white/90",
       )}
     >
       <span
