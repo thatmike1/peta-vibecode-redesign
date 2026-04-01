@@ -19,7 +19,7 @@ function LangToggle({ scrolled }: { scrolled: boolean }) {
       onAnimationEnd={() => setFlipping(false)}
       title={lang === "cs" ? "Switch to English" : "Přepnout do češtiny"}
       className={cn(
-        "text-xl w-9 h-9 flex items-center justify-center rounded-full border transition-all duration-300 hover:scale-110",
+        "text-[11px] font-semibold tracking-wider w-9 h-9 flex items-center justify-center rounded-full border transition-all duration-300 hover:scale-110",
         scrolled
           ? "border-white/15 hover:border-white/30"
           : "border-hero-text/15 hover:border-hero-text/30",
@@ -29,7 +29,7 @@ function LangToggle({ scrolled }: { scrolled: boolean }) {
         className={flipping ? "flag-flip" : ""}
         style={{ display: "inline-block", lineHeight: 1 }}
       >
-        {lang === "cs" ? "🇨🇿" : "🇬🇧"}
+        {lang === "cs" ? "CS" : "EN"}
       </span>
     </button>
   );
