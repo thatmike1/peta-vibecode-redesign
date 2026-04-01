@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/sections/hero-section";
 import { AboutSection } from "@/components/sections/about-section";
 import { EducationSection } from "@/components/sections/education-section";
 import { ExperienceSection } from "@/components/sections/experience-section";
+import { UniversityProjectsSection } from "@/components/sections/university-projects-section";
 import { ProjectsSection } from "@/components/sections/projects-section";
 import { SkillsSection } from "@/components/sections/skills-section";
 import { CertificationsSection } from "@/components/sections/certifications-section";
@@ -19,6 +20,7 @@ export default function V1OriginalPage() {
         <AboutSection />
         <EducationSection />
         <ExperienceSection />
+        <UniversityProjectsSection />
         <ProjectsSection />
         <SkillsSection />
         <CertificationsSection />

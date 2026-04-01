@@ -6,10 +6,10 @@ import { cn } from "@/lib/utils";
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="py-24 lg:py-32 bg-parchment-dark">
+    <section id="portfolio" className="py-24 lg:py-32 bg-parchment-dark">
       <div className="max-w-6xl mx-auto px-6">
         <Reveal>
-          <SectionHeading>Projekty</SectionHeading>
+          <SectionHeading>Portfolio</SectionHeading>
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

@@ -12,6 +12,7 @@ export interface Experience {
   role: string;
   period: string;
   location: string;
+  project?: string;
   highlights: string[];
 }
 
@@ -148,17 +149,6 @@ export const experience: Experience[] = [
     ],
   },
   {
-    company: "Univerzita Palackého v Olomouci",
-    role: "3D Modeling Specialist",
-    period: "prosinec 2025 – únor 2026",
-    location: "Česká republika",
-    highlights: [
-      "3D modelování objektů pro fyzickou instalaci a 3D tisk",
-      "Úprava a optimalizace geometrie modelů pro výrobu",
-      "Nástroje: Blender, 3D Builder",
-    ],
-  },
-  {
     company: "Skymaps s.r.o.",
     role: "Analytik GIS",
     period: "únor 2025 – březen 2025",
@@ -166,6 +156,21 @@ export const experience: Experience[] = [
     highlights: [
       "Zpracování satelitních snímků a rastrových dat v prostředí GIS",
       "Analýza obrazových dat a jejich následná interpretace",
+    ],
+  },
+];
+
+export const universityProjects: Experience[] = [
+  {
+    company: "Univerzita Palackého v Olomouci",
+    role: "3D Modeling Specialist",
+    period: "prosinec 2025 – únor 2026",
+    location: "Česká republika",
+    project: "Modelování, zpracování a výroba rozměrných 3D modelů dvou grott včetně světelné a vodní instalace",
+    highlights: [
+      "3D modelování objektů pro fyzickou instalaci a 3D tisk",
+      "Úprava a optimalizace geometrie modelů pro výrobu",
+      "Nástroje: Blender, 3D Builder",
     ],
   },
 ];

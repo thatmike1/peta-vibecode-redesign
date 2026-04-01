@@ -7,6 +7,7 @@ const navItems = [
   { label: "Vzdělání", href: "#education" },
   { label: "Praxe", href: "#experience" },
   { label: "Projekty", href: "#projects" },
+  { label: "Portfolio", href: "#portfolio" },
   { label: "Dovednosti", href: "#skills" },
   { label: "Certifikace", href: "#certifications" },
   { label: "Služby", href: "#services" },
