@@ -139,6 +139,20 @@ export const experience: Experience[] = [
 
 export const universityProjects: Experience[] = [
   {
+    company: "Palacký University Olomouc – KGI / FF / VTP UP + Advolution",
+    role: "Data Collection Coordinator & Field Researcher",
+    period: "2025 – present",
+    location: "Olomouc, Czech Republic",
+    project: "Visual Attention and Perception Research in Urban Environments",
+    highlights: [
+      "Conducted 40–60 eye-tracking sessions in Olomouc, recording participants' visual attention during on-foot and in-vehicle routes",
+      "Coordinated participants – experiment logistics, route timing, transfers, and communication",
+      "Collected and managed spatial field data (GPS/GPX tracks, synchronisation with eye-tracking recordings)",
+      "Interdisciplinary collaboration spanning geoinformatics, psychology, academia, and the private sector",
+      "Prospective analyses: route visualisations, fixation heatmaps, spatial attention time-series",
+    ],
+  },
+  {
     company: "Palacký University Olomouc",
     role: "3D Modeling Specialist",
     period: "December 2025 – February 2026",
