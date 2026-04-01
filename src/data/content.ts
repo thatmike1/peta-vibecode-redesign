@@ -35,6 +35,7 @@ export interface Certification {
   issuer: string;
   date: string;
   description: string;
+  pdfUrl?: string;
 }
 
 export interface Service {
@@ -164,7 +165,7 @@ export const universityProjects: Experience[] = [
   {
     company: "Univerzita Palackého v Olomouci – KGI / FF / VTP UP + Advolution",
     role: "Koordinátor sběru dat a terénní výzkumník",
-    period: "2025 – dosud",
+    period: "2026 – dosud",
     location: "Olomouc, Česká republika",
     project: "Výzkum vnímání a vizuální pozornosti v městském prostředí",
     highlights: [
@@ -379,6 +380,7 @@ export const certifications: Certification[] = [
     date: "Květen 2023",
     description:
       "Kurz pokrývající základy programování v Pythonu se zaměřením na automatizaci GIS úloh a práci s geoprostorovými daty.",
+    pdfUrl: "/certifikaty/python-for-everyone.pdf",
   },
   {
     name: "Introduction to IoT",
@@ -386,6 +388,7 @@ export const certifications: Certification[] = [
     date: "Duben 2020",
     description:
       "Kurz pokrýval IoT a digitální transformaci, důležitost softwaru a dat, automatizaci, umělou inteligenci a základy síťové bezpečnosti.",
+    pdfUrl: "/certifikaty/iot-cisco.pdf",
   },
   {
     name: "Online výcvik pilota bezpilotních prostředků",
@@ -393,6 +396,7 @@ export const certifications: Certification[] = [
     date: "Říjen 2024",
     description:
       "Certifikát / Oprávnění pro piloty bezpilotních prostředků vydaný Úřadem pro civilní letectví ČR v souladu s předpisy EASA.",
+    pdfUrl: "/certifikaty/pilot-dron.pdf",
   },
   {
     name: "Instruktor snowboardingu APUL/D",
@@ -400,6 +404,7 @@ export const certifications: Certification[] = [
     date: "Prosinec 2021 – Leden 2027",
     description:
       "Licence instrukce snowboardingu – Asociace profesionálních učitelů lyžování a lyžařských škol.",
+    pdfUrl: "/certifikaty/apul-snowboard.pdf",
   },
 ];
 

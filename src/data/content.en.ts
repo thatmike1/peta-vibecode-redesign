@@ -141,7 +141,7 @@ export const universityProjects: Experience[] = [
   {
     company: "Palacký University Olomouc – KGI / FF / VTP UP + Advolution",
     role: "Data Collection Coordinator & Field Researcher",
-    period: "2025 – present",
+    period: "2026 – present",
     location: "Olomouc, Czech Republic",
     project: "Visual Attention and Perception Research in Urban Environments",
     highlights: [
@@ -357,6 +357,7 @@ export const certifications: Certification[] = [
     date: "May 2023",
     description:
       "Course covering Python programming fundamentals with a focus on GIS task automation and geospatial data processing.",
+    pdfUrl: "/certifikaty/python-for-everyone.pdf",
   },
   {
     name: "Introduction to IoT",
@@ -364,6 +365,7 @@ export const certifications: Certification[] = [
     date: "April 2020",
     description:
       "Course covering IoT and digital transformation, the importance of software and data, automation, artificial intelligence, and network security fundamentals.",
+    pdfUrl: "/certifikaty/iot-cisco.pdf",
   },
   {
     name: "Online UAV Pilot Training",
@@ -371,6 +373,7 @@ export const certifications: Certification[] = [
     date: "October 2024",
     description:
       "Certificate / Authorization for unmanned aircraft pilots issued by the Civil Aviation Authority of the Czech Republic in compliance with EASA regulations.",
+    pdfUrl: "/certifikaty/pilot-dron.pdf",
   },
   {
     name: "Snowboard Instructor APUL/D",
@@ -378,6 +381,7 @@ export const certifications: Certification[] = [
     date: "December 2021 – January 2027",
     description:
       "Snowboard instruction license – Association of Professional Ski and Snowboard Instructors.",
+    pdfUrl: "/certifikaty/apul-snowboard.pdf",
   },
 ];
 

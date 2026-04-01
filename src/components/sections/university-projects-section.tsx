@@ -12,11 +12,10 @@ export function UniversityProjectsSection() {
           <SectionHeading>{ui.sections.projects}</SectionHeading>
         </Reveal>
 
-        <div className="max-w-3xl">
+        <div className="space-y-12 max-w-3xl">
           {universityProjects.map((exp, i) => (
             <Reveal key={i} delay={100 + i * 100}>
-              {i > 0 && <hr className="border-border" />}
-              <div className="py-8 first:pt-0 last:pb-0">
+              <div>
                 <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-3">
                   <div>
                     <p className="text-sm font-semibold text-topo">
