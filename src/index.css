@@ -93,6 +93,17 @@
 .contour-delay-5 { animation-delay: 1.4s; }
 .contour-delay-6 { animation-delay: 1.7s; }
 
+/* ── language flag flip ── */
+@keyframes flag-flip {
+  0%   { transform: rotateY(0deg) scale(1); }
+  40%  { transform: rotateY(90deg) scale(0.8); }
+  60%  { transform: rotateY(90deg) scale(0.8); }
+  100% { transform: rotateY(0deg) scale(1); }
+}
+.flag-flip {
+  animation: flag-flip 0.45s ease both;
+}
+
 /* ── v4 glassmorphism & scroll-driven ── */
 
 .glass-card {

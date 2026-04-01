@@ -1,15 +1,18 @@
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
-import { projects, type Project } from "@/data/content";
+import { useContent } from "@/hooks/use-content";
+import type { Project } from "@/data/content";
 import { ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function ProjectsSection() {
+  const { projects, ui } = useContent();
+
   return (
     <section id="portfolio" className="py-24 lg:py-32 bg-parchment-dark">
       <div className="max-w-6xl mx-auto px-6">
         <Reveal>
-          <SectionHeading>Portfolio</SectionHeading>
+          <SectionHeading>{ui.sections.portfolio}</SectionHeading>
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

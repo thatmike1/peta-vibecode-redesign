@@ -10,8 +10,11 @@ import { CertificationsSection } from "@/components/sections/certifications-sect
 import { ServicesSection } from "@/components/sections/services-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { footer } from "@/data/content";
+import { useContent } from "@/hooks/use-content";
 
 export default function V1OriginalPage() {
+  const { ui } = useContent();
+
   return (
     <>
       <Navigation />
@@ -30,9 +33,9 @@ export default function V1OriginalPage() {
       <footer className="bg-hero-bg border-t border-white/5 py-8">
         <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <p className="text-hero-text/30 text-xs">
-            {footer.name} · {footer.address} · {footer.zip} · IČO: {footer.ico}
+            {footer.name} · {footer.address} · {footer.zip} · {ui.footer.icoLabel}: {footer.ico}
           </p>
-          <p className="text-hero-text/20 text-xs">{footer.copyright}</p>
+          <p className="text-hero-text/20 text-xs">{ui.footer.copyright}</p>
         </div>
       </footer>
     </>

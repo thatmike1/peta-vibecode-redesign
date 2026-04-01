@@ -1,13 +1,15 @@
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
-import { skills } from "@/data/content";
+import { useContent } from "@/hooks/use-content";
 
 export function SkillsSection() {
+  const { skills, ui } = useContent();
+
   return (
     <section id="skills" className="py-24 lg:py-32">
       <div className="max-w-6xl mx-auto px-6">
         <Reveal>
-          <SectionHeading>Dovednosti</SectionHeading>
+          <SectionHeading>{ui.sections.skills}</SectionHeading>
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">

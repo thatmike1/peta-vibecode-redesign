@@ -177,6 +177,21 @@ export const universityProjects: Experience[] = [
 
 export const projects: Project[] = [
   {
+    title: "VečerkaPlus",
+    description:
+      "Noční rozvoz alkoholu, nápojů a snacků ve Frýdku-Místku a okolí s důrazem na rychlost, jednoduchost objednávky a moderní webovou aplikaci.",
+    features: [
+      "Vývoj webové aplikace pro objednávky (React + Vite)",
+      "Napojení na Supabase (databáze objednávek a produktů)",
+      "Integrace Google Maps API (výpočet vzdálenosti a doručení)",
+      "Automatizace notifikací (email + Telegram)",
+      "Návrh UX pro rychlé noční objednávky",
+    ],
+    tags: ["React", "Vite", "Supabase", "PostgreSQL", "Google Maps API", "JavaScript"],
+    link: "https://vecerkaplus.cz/",
+    linkLabel: "vecerkaplus.cz",
+  },
+  {
     title: "AI Map Generation Evaluation",
     description:
       "Diplomová práce: evaluace kvality map generovaných AI pomocí objektních metrik a kartografické analýzy.",
@@ -419,6 +434,44 @@ export const services: Service[] = [
     tags: ["ESP32", "MQTT", "Python", "PostgreSQL"],
   },
 ];
+
+export const ui = {
+  nav: {
+    about: "O mně",
+    education: "Vzdělání",
+    experience: "Praxe",
+    projects: "Projekty",
+    portfolio: "Portfolio",
+    skills: "Dovednosti",
+    certifications: "Certifikace",
+    services: "Služby",
+    contact: "Kontakt",
+  },
+  hero: {
+    more: "Více",
+    contact: "Kontakt",
+    role: "GIS Analytik",
+  },
+  sections: {
+    about: "O mně",
+    education: "Vzdělání",
+    experience: "Praxe",
+    projects: "Projekty",
+    portfolio: "Portfolio",
+    skills: "Dovednosti",
+    certifications: "Certifikace",
+    services: "Služby",
+    contact: "Kontakt",
+  },
+  contact: {
+    tagline: "Pokud máte zájem o spolupráci, neváhejte mě kontaktovat.",
+  },
+  footer: {
+    icoLabel: "IČO",
+    copyright:
+      "© 2026 Petr Mikeska — Fyzická osoba podnikající dle živnostenského zákona",
+  },
+};
 
 export const contact = {
   email: "piter.mikeska@gmail.com",

@@ -1,9 +1,12 @@
 import { Reveal } from "@/components/reveal";
 import { ContourBg } from "@/components/contour-bg";
 import { hero } from "@/data/content";
+import { useContent } from "@/hooks/use-content";
 import { ChevronDown, Github, Linkedin } from "lucide-react";
 
 export function HeroSection() {
+  const { ui } = useContent();
+
   return (
     <section className="relative min-h-screen bg-hero-bg overflow-hidden flex items-center">
       <ContourBg className="text-hero-text" />
@@ -57,13 +60,13 @@ export function HeroSection() {
                   href="#about"
                   className="bg-hero-text text-hero-bg font-medium text-sm px-7 py-2.5 rounded-full hover:opacity-90 transition-opacity"
                 >
-                  Více
+                  {ui.hero.more}
                 </a>
                 <a
                   href="#contact"
                   className="text-hero-text/70 border border-hero-text/20 font-medium text-sm px-7 py-2.5 rounded-full hover:border-hero-text/40 hover:text-hero-text transition-all"
                 >
-                  Kontakt
+                  {ui.hero.contact}
                 </a>
               </div>
             </Reveal>
@@ -90,7 +93,7 @@ export function HeroSection() {
                 </a>
                 <div className="w-12 h-px bg-hero-text/15" />
                 <span className="text-[10px] text-hero-text/25 tracking-widest uppercase">
-                  GIS Analytik
+                  {ui.hero.role}
                 </span>
               </div>
             </Reveal>

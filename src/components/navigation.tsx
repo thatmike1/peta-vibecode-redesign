@@ -1,22 +1,56 @@
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Menu, X, Download } from "lucide-react";
+import { useLanguage } from "@/contexts/language-context";
+import { useContent } from "@/hooks/use-content";
 
-const navItems = [
-  { label: "O mně", href: "#about" },
-  { label: "Vzdělání", href: "#education" },
-  { label: "Praxe", href: "#experience" },
-  { label: "Projekty", href: "#projects" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Dovednosti", href: "#skills" },
-  { label: "Certifikace", href: "#certifications" },
-  { label: "Služby", href: "#services" },
-  { label: "Kontakt", href: "#contact" },
-];
+function LangToggle({ scrolled }: { scrolled: boolean }) {
+  const { lang, toggle } = useLanguage();
+  const [flipping, setFlipping] = useState(false);
+
+  const handleClick = () => {
+    setFlipping(true);
+    toggle();
+  };
+
+  return (
+    <button
+      onClick={handleClick}
+      onAnimationEnd={() => setFlipping(false)}
+      title={lang === "cs" ? "Switch to English" : "Přepnout do češtiny"}
+      className={cn(
+        "text-xl w-9 h-9 flex items-center justify-center rounded-full border transition-all duration-300 hover:scale-110",
+        scrolled
+          ? "border-white/15 hover:border-white/30"
+          : "border-hero-text/15 hover:border-hero-text/30",
+      )}
+    >
+      <span
+        className={flipping ? "flag-flip" : ""}
+        style={{ display: "inline-block", lineHeight: 1 }}
+      >
+        {lang === "cs" ? "🇨🇿" : "🇬🇧"}
+      </span>
+    </button>
+  );
+}
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { ui } = useContent();
+
+  const navItems = [
+    { label: ui.nav.about, href: "#about" },
+    { label: ui.nav.education, href: "#education" },
+    { label: ui.nav.experience, href: "#experience" },
+    { label: ui.nav.projects, href: "#projects" },
+    { label: ui.nav.portfolio, href: "#portfolio" },
+    { label: ui.nav.skills, href: "#skills" },
+    { label: ui.nav.certifications, href: "#certifications" },
+    { label: ui.nav.services, href: "#services" },
+    { label: ui.nav.contact, href: "#contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 100);
@@ -59,6 +93,7 @@ export function Navigation() {
               {item.label}
             </a>
           ))}
+          <LangToggle scrolled={scrolled} />
           <a
             href="https://petrmikeska.cz/assets/resume/Petr_Mikeska_CV.pdf"
             target="_blank"
@@ -93,7 +128,7 @@ export function Navigation() {
       <div
         className={cn(
           "lg:hidden overflow-hidden transition-all duration-300",
-          mobileOpen ? "max-h-96 border-b border-border" : "max-h-0",
+          mobileOpen ? "max-h-screen border-b border-border" : "max-h-0",
         )}
       >
         <div className="bg-black/90 backdrop-blur-xl px-6 py-4 space-y-3">
@@ -107,15 +142,18 @@ export function Navigation() {
               {item.label}
             </a>
           ))}
-          <a
-            href="https://petrmikeska.cz/assets/resume/Petr_Mikeska_CV.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-[oklch(0.55_0.18_160)] font-medium"
-          >
-            <Download className="w-3.5 h-3.5" />
-            Životopis
-          </a>
+          <div className="flex items-center gap-3 pt-1">
+            <LangToggle scrolled={true} />
+            <a
+              href="https://petrmikeska.cz/assets/resume/Petr_Mikeska_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm text-[oklch(0.55_0.18_160)] font-medium"
+            >
+              <Download className="w-3.5 h-3.5" />
+              CV
+            </a>
+          </div>
         </div>
       </div>
     </nav>

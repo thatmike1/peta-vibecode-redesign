@@ -1,13 +1,15 @@
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
-import { certifications } from "@/data/content";
+import { useContent } from "@/hooks/use-content";
 
 export function CertificationsSection() {
+  const { certifications, ui } = useContent();
+
   return (
     <section id="certifications" className="py-24 lg:py-32 bg-parchment-dark">
       <div className="max-w-6xl mx-auto px-6">
         <Reveal>
-          <SectionHeading>Certifikace</SectionHeading>
+          <SectionHeading>{ui.sections.certifications}</SectionHeading>
         </Reveal>
 
         <div className="max-w-3xl">

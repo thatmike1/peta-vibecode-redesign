@@ -1,13 +1,15 @@
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
-import { about } from "@/data/content";
+import { useContent } from "@/hooks/use-content";
 
 export function AboutSection() {
+  const { about, ui } = useContent();
+
   return (
     <section id="about" className="py-24 lg:py-32">
       <div className="max-w-6xl mx-auto px-6">
         <Reveal>
-          <SectionHeading>O mně</SectionHeading>
+          <SectionHeading>{ui.sections.about}</SectionHeading>
         </Reveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-8 max-w-4xl">
