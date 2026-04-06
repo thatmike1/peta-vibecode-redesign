@@ -170,10 +170,7 @@ export const universityProjects: Experience[] = [
     project: "Výzkum vnímání a vizuální pozornosti v městském prostředí",
     highlights: [
       "Realizace 40–60 jízd se sledováním vizuální pozornosti pomocí eye-tracking brýlí v Olomouci",
-      "Koordinace participantů – logistika experimentu, časování tras, přesuny, komunikace",
-      "Sběr a správa prostorových dat v terénu (GPS/GPX trasy, synchronizace s eye-tracking záznamy)",
-      "Interdisciplinární spolupráce: geoinformatika, psychologie, akademická sféra a soukromý sektor",
-      "Potenciální analýzy: vizualizace tras, heatmapy fixací, časové analýzy pozornosti v prostoru",
+     
     ],
   },
   {
