@@ -184,6 +184,24 @@ export const projects: Project[] = [
     linkLabel: "vecerkaplus.cz",
   },
   {
+    title: "POGEO – Pirate Party Electoral Analysis 2025",
+    description:
+      "Spatial analysis of the Czech Pirate Party's electoral performance at the municipal level using Geographically Weighted Regression (GWR). University course project.",
+    features: [
+      "GWR model (R² 0.445) vs OLS (R² 0.188) — spatial autocorrelation of residuals eliminated",
+      "Analysis of 6,157 municipalities with SLDB 2021 predictors (education, employment, religiosity, etc.)",
+      "Interactive electoral atlas with cartographic outputs",
+    ],
+    tags: ["R", "GWR", "Spatial Analysis", "Cartography", "ArcGIS Pro"],
+    link: "https://github.com/SvobVojtech/pogeo_2026",
+    linkLabel: "GitHub",
+    links: [
+      { label: "GitHub", url: "https://github.com/SvobVojtech/pogeo_2026" },
+      { label: "Analysis", url: "https://petrmikeska.cz/pogeo/" },
+      { label: "Electoral Atlas", url: "https://petrmikeska.cz/pogeo/map/" },
+    ],
+  },
+  {
     title: "AI Map Generation Evaluation",
     description:
       "Master's thesis: evaluating the quality of AI-generated maps using object-based metrics and cartographic analysis.",

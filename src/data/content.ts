@@ -23,6 +23,7 @@ export interface Project {
   tags: string[];
   link: string;
   linkLabel: string;
+  links?: { label: string; url: string }[];
 }
 
 export interface SkillCategory {
@@ -202,6 +203,24 @@ export const projects: Project[] = [
     tags: ["React", "Vite", "Supabase", "PostgreSQL", "Google Maps API", "JavaScript"],
     link: "https://vecerkaplus.cz/",
     linkLabel: "vecerkaplus.cz",
+  },
+  {
+    title: "POGEO – Volební analýza Pirátů 2025",
+    description:
+      "Prostorová analýza volebního úspěchu České pirátské strany na úrovni obcí s využitím Geographically Weighted Regression (GWR). Projekt v rámci kurzu POGEO.",
+    features: [
+      "GWR model (R² 0.445) vs OLS (R² 0.188) — eliminace prostorové autokorelace reziduí",
+      "Analýza 6 157 obcí s prediktory z SLDB 2021 (vzdělání, zaměstnanost, věřící aj.)",
+      "Interaktivní volební atlas s kartografickými výstupy",
+    ],
+    tags: ["R", "GWR", "Prostorová analýza", "Kartografie", "ArcGIS Pro"],
+    link: "https://github.com/SvobVojtech/pogeo_2026",
+    linkLabel: "GitHub",
+    links: [
+      { label: "GitHub", url: "https://github.com/SvobVojtech/pogeo_2026" },
+      { label: "Analýza", url: "https://petrmikeska.cz/pogeo/" },
+      { label: "Volební atlas", url: "https://petrmikeska.cz/pogeo/map/" },
+    ],
   },
   {
     title: "AI Map Generation Evaluation",

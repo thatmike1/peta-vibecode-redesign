@@ -83,15 +83,32 @@ function ProjectCard({
             </span>
           ))}
         </div>
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-topo transition-colors group-hover:text-topo"
-        >
-          <ExternalLink className="w-3.5 h-3.5" />
-          {project.linkLabel}
-        </a>
+        {project.links && project.links.length > 0 ? (
+          <div className="flex flex-wrap gap-3">
+            {project.links.map((l) => (
+              <a
+                key={l.url}
+                href={l.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-topo transition-colors group-hover:text-topo"
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                {l.label}
+              </a>
+            ))}
+          </div>
+        ) : (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-topo transition-colors group-hover:text-topo"
+          >
+            <ExternalLink className="w-3.5 h-3.5" />
+            {project.linkLabel}
+          </a>
+        )}
       </div>
     </div>
   );
