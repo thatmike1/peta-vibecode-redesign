@@ -1,71 +1,63 @@
-# vite-react-shadcn-starter
+# petrmikeska.cz — Portfolio
 
-Opinionated starter template for building apps with Vite, React, and shadcn/ui.
+Osobní portfolio web Petra Mikesky. Single-page React aplikace s vícejazyčnou podporou (CZ/EN).
 
 ## Tech Stack
 
-| Category | Tech |
+| Kategorie | Technologie |
 |---|---|
 | **Framework** | React 19 + TypeScript |
 | **Build** | Vite 6 (SWC) |
 | **Styling** | Tailwind CSS v4 |
-| **Components** | shadcn/ui (New York style) |
-| **Icons** | Lucide React |
-| **Routing** | React Router v7 |
-| **Data Fetching** | TanStack React Query v5 |
-| **Forms** | React Hook Form + Zod v4 |
-| **Toasts** | Sonner |
+| **Komponenty** | shadcn/ui (New York style) |
+| **Ikony** | Lucide React |
+| **Fonty** | Space Grotesk (sans), Instrument Serif |
 
-## What's Included
-
-- React Query provider
-- React Router with layout pattern
-- Path aliases (`@/` -> `src/`)
-- ESLint with `no-explicit-any` set to error
-- Base shadcn/ui components: Button, Input, Label, Card, Sonner
-
-## Getting Started
+## Příkazy
 
 ```bash
-# clone
-git clone https://github.com/thatmike1/vite-react-shadcn-starter.git my-app
-cd my-app
-
-# install
-npm install
-
-# run
-npm run dev
+npm run dev       # dev server na http://localhost:5173
+npm run build     # TypeScript check + Vite produkční build
+npm run lint      # ESLint
+npm run preview   # náhled produkčního buildu
 ```
 
-## Project Structure
+## Struktura projektu
 
 ```
 src/
-  components/ui/     # shadcn/ui components
-  hooks/             # custom hooks
-  lib/               # query client, utils (cn)
-  pages/             # layout
-  App.tsx
-  main.tsx
+  components/
+    sections/     # sekce stránky (hero, experience, projects, ...)
+    ui/           # shadcn/ui komponenty
+  data/
+    content.ts    # veškerý obsah webu (CZ)
+    content.en.ts # veškerý obsah webu (EN)
+  hooks/          # use-content (přepínání jazyka)
+  pages/
+    v1-original.tsx  # hlavní stránka
+  index.css       # Tailwind v4 + custom design tokeny
 ```
 
-## Adding shadcn/ui Components
+## Obsah a data
 
-```bash
-npx shadcn@latest add [component-name]
-```
+Veškerý text, zkušenosti, projekty a dovednosti jsou v `src/data/content.ts` (CZ) a `src/data/content.en.ts` (EN). Žádná API volání ani state management — sekce importují data přímo.
 
-## Conventions
+## Design tokeny (Tailwind v4)
 
-- Kebab-case file names (`use-auth.ts`, not `useAuth.ts`)
-- `.ts` for hooks/utils, `.tsx` only when returning JSX
-- No `any` types (eslint will error)
+Definované v `src/index.css` pod `@theme inline`:
 
-## Looking for Supabase?
+- `topo` — primární zelená akcentová barva
+- `terracotta` — sekundární oranžová
+- `hero-bg` / `hero-text` — tmavá hero paleta
+- `parchment-dark` — off-white pozadí sekcí
 
-Check out [vite-react-supabase-starter](https://github.com/thatmike1/vite-react-supabase-starter) which adds Supabase auth, protected routes, and a login page on top of this template.
+## Konvence
 
-## License
+- Kebab-case názvy souborů (`experience-section.tsx`)
+- `.ts` pro non-JSX, `.tsx` pouze při vracení JSX
+- Žádné `any` typy (ESLint error)
+- Path alias `@/` → `src/`
 
-MIT
+## Certifikáty
+
+PDF soubory certifikátů jsou v `public/certifikaty/`. Cesty jsou referencovány v `content.ts` pod polem `pdfUrl`.

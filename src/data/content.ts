@@ -215,19 +215,18 @@ export const projects: Project[] = [
   {
     title: "POGEO – Volební analýza Pirátů 2025",
     description:
-      "Prostorová analýza volebního úspěchu České pirátské strany na úrovni obcí s využitím Geographically Weighted Regression (GWR). Projekt v rámci kurzu POGEO.",
+      "Prostorová analýza volebního úspěchu České pirátské strany na úrovni 6 157 obcí s využitím Geographically Weighted Regression.",
     features: [
       "GWR model (R² 0.445) vs OLS (R² 0.188) — eliminace prostorové autokorelace reziduí",
-      "Analýza 6 157 obcí s prediktory z SLDB 2021 (vzdělání, zaměstnanost, věřící aj.)",
-      "Interaktivní volební atlas s kartografickými výstupy",
+      "Prediktory z SLDB 2021: vzdělání, zaměstnanost, věřící aj.",
+      "Kartografické výstupy a interaktivní volební atlas",
     ],
     tags: ["R", "GWR", "Prostorová analýza", "Kartografie", "ArcGIS Pro"],
     link: "https://github.com/SvobVojtech/pogeo_2026",
     linkLabel: "GitHub",
     links: [
-      { label: "GitHub", url: "https://github.com/SvobVojtech/pogeo_2026" },
-      { label: "Analýza", url: "https://petrmikeska.cz/pogeo/" },
-      { label: "Volební atlas", url: "https://petrmikeska.cz/pogeo/map/" },
+      { label: "Volební atlas", url: "https://petrmikeska.cz/pogeo/" },
+      { label: "Interaktivní mapa", url: "https://petrmikeska.cz/pogeo/map/" },
     ],
   },
   {

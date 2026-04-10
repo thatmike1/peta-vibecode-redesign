@@ -101,7 +101,7 @@ export const education: Education[] = [
 export const experience: Experience[] = [
   {
     company: "Skymaps s.r.o.",
-    role: "GIS Analyst",
+    role: "GIS & Remote Sensing Analyst",
     period: "February 2025 – Present",
     location: "Czech Republic",
     highlights: [
@@ -115,7 +115,7 @@ export const experience: Experience[] = [
   },
   {
     company: "Palacký University Olomouc",
-    role: "Web Administrator",
+    role: "Web Developer & Administrator",
     period: "May 2023 – Present",
     location: "Czech Republic",
     highlights: [
@@ -132,7 +132,7 @@ export const experience: Experience[] = [
   },
   {
     company: "Skymaps s.r.o.",
-    role: "GIS Analyst",
+    role: "GIS & Remote Sensing Analyst",
     period: "February 2025 – March 2025",
     location: "Czech Republic",
     highlights: [
@@ -189,21 +189,20 @@ export const projects: Project[] = [
     linkLabel: "vecerkaplus.cz",
   },
   {
-    title: "POGEO – Pirate Party Electoral Analysis 2025",
+    title: "POGEO – Czech Pirate Party Election Analysis 2025",
     description:
-      "Spatial analysis of the Czech Pirate Party's electoral performance at the municipal level using Geographically Weighted Regression (GWR). University course project.",
+      "Spatial analysis of the Czech Pirate Party's electoral success across 6,157 municipalities using Geographically Weighted Regression.",
     features: [
-      "GWR model (R² 0.445) vs OLS (R² 0.188) — spatial autocorrelation of residuals eliminated",
-      "Analysis of 6,157 municipalities with SLDB 2021 predictors (education, employment, religiosity, etc.)",
-      "Interactive electoral atlas with cartographic outputs",
+      "GWR model (R² 0.445) vs OLS (R² 0.188) — elimination of spatial autocorrelation in residuals",
+      "Predictors from the 2021 Czech Census: education, employment, religiosity, etc.",
+      "Cartographic outputs and an interactive electoral atlas",
     ],
     tags: ["R", "GWR", "Spatial Analysis", "Cartography", "ArcGIS Pro"],
     link: "https://github.com/SvobVojtech/pogeo_2026",
     linkLabel: "GitHub",
     links: [
-      { label: "GitHub", url: "https://github.com/SvobVojtech/pogeo_2026" },
-      { label: "Analysis", url: "https://petrmikeska.cz/pogeo/" },
-      { label: "Electoral Atlas", url: "https://petrmikeska.cz/pogeo/map/" },
+      { label: "Electoral Atlas", url: "https://petrmikeska.cz/pogeo/" },
+      { label: "Interactive Map", url: "https://petrmikeska.cz/pogeo/map/" },
     ],
   },
   {
