@@ -129,7 +129,7 @@ export const education: Education[] = [
 export const experience: Experience[] = [
   {
     company: "Skymaps s.r.o.",
-    role: "Analytik GIS",
+    role: "GIS & Remote Sensing Analyst",
     period: "únor 2025 – Současnost",
     location: "Česká republika",
     highlights: [
@@ -143,7 +143,7 @@ export const experience: Experience[] = [
   },
   {
     company: "Univerzita Palackého v Olomouci",
-    role: "Správce webu",
+    role: "Web Developer & Administrator",
     period: "květen 2023 – Současnost",
     location: "Česká republika",
     highlights: [
@@ -160,7 +160,7 @@ export const experience: Experience[] = [
   },
   {
     company: "Skymaps s.r.o.",
-    role: "Analytik GIS",
+    role: "GIS & Remote Sensing Analyst",
     period: "únor 2025 – březen 2025",
     location: "Česká republika",
     highlights: [
