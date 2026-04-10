@@ -2,21 +2,20 @@ import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { ContourBg } from "@/components/contour-bg";
 import { contact } from "@/data/content";
+import { useContent } from "@/hooks/use-content";
 import { Mail, Phone, Linkedin, Github, Globe } from "lucide-react";
 
-const contactLinks = [
-  {
-    icon: Mail,
-    label: "piter.mikeska@gmail.com",
-    href: `mailto:${contact.email}`,
-  },
-  { icon: Phone, label: contact.phone, href: `tel:${contact.phone}` },
-  { icon: Linkedin, label: "LinkedIn", href: contact.linkedin },
-  { icon: Github, label: "GitHub", href: contact.github },
-  { icon: Globe, label: "petrmikeska.cz", href: contact.website },
-];
-
 export function ContactSection() {
+  const { ui } = useContent();
+
+  const contactLinks = [
+    { icon: Mail, label: contact.email, href: `mailto:${contact.email}` },
+    { icon: Phone, label: contact.phone, href: `tel:${contact.phone}` },
+    { icon: Linkedin, label: "LinkedIn", href: contact.linkedin },
+    { icon: Github, label: "GitHub", href: contact.github },
+    { icon: Globe, label: "petrmikeska.cz", href: contact.website },
+  ];
+
   return (
     <section
       id="contact"
@@ -26,13 +25,13 @@ export function ContactSection() {
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <Reveal>
-          <SectionHeading light>Kontakt</SectionHeading>
+          <SectionHeading light>{ui.sections.contact}</SectionHeading>
         </Reveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <Reveal delay={200}>
             <p className="text-hero-text/50 text-lg font-serif leading-relaxed max-w-md">
-              Pokud máte zájem o spolupráci, neváhejte mě kontaktovat.
+              {ui.contact.tagline}
             </p>
           </Reveal>
 

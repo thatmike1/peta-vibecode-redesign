@@ -12,7 +12,9 @@ export interface Experience {
   role: string;
   period: string;
   location: string;
+  project?: string;
   highlights: string[];
+  links?: { label: string; url: string }[];
 }
 
 export interface Project {
@@ -22,6 +24,9 @@ export interface Project {
   tags: string[];
   link: string;
   linkLabel: string;
+  webLink?: string;
+  webLinkLabel?: string;
+  links?: { label: string; url: string }[];
 }
 
 export interface SkillCategory {
@@ -34,6 +39,7 @@ export interface Certification {
   issuer: string;
   date: string;
   description: string;
+  pdfUrl?: string;
 }
 
 export interface Service {
@@ -47,13 +53,22 @@ export const hero = {
   name: "Petr Mikeska",
   specialties: [
     "Web GIS",
-    "PostGIS API",
-    "Spatial Databases",
-    "GeoAI",
     "Remote Sensing",
+    "GeoAI",
+    "Spatial Databases",
+    "Computer Vision",
+  ],
+  hashtags: [
+    "#geoinformatika",
+    "#DPZ",
+    "#webgis",
+    "#prostoroveanalyzy",
+    "#mapoveaplikace",
+    "#geodata",
+    "#computervision",
   ],
   coordinates: "49.5167°N, 18.3333°E",
-  photo: "https://petrmikeska.cz/assets/img/passport.webp",
+  photo: "/passport.webp",
   linkedin: "https://www.linkedin.com/in/petr-mikeska-b25669262/",
   github: "https://github.com/metrpikeska",
   cvUrl: "https://petrmikeska.cz/assets/resume/Petr_Mikeska_CV.pdf",
@@ -64,7 +79,7 @@ export const about = [
   "Současně aktivně pracuji i v klasickém GIS prostředí, zejména v QGIS, ArcGIS Pro a ArcGIS Online. Využívám je pro prostorové analýzy, práci s rastrovými a vektorovými daty, kartografické výstupy i publikaci mapových vrstev a webových aplikací.",
   "Specializuji se na návrh prostorových databází, vývoj webových mapových aplikací, automatizaci zpracování geodat a analytické workflow v Pythonu. Věnuji se také zpracování satelitních a rastrových dat a využití computer vision pro analýzu obrazu a videa.",
   "Pracuji na projektech od WebGIS aplikací s real-time IoT daty přes backendy pro prostorové dotazy až po AI detekci objektů z videa. Dlouhodobě se zaměřuji na propojování GIS, vývoje a datové analytiky do funkčních geodatových řešení.",
-  "Mimo technologie mám blízko k horám a sportu. Pocházím z Beskyd, v zimě působím jako instruktor snowboardingu a ve volném čase se věnuji turistice, boxu a hudbě.",
+  "Mimo technologie mám blízko k horám a sportu. Pocházím z Beskyd, v zimě působím jako instruktor snowboardingu a ve volném čase se věnuji turistice, boxu a hudbě. Rád sbírám hudbu na CD a vinylech — mou sbírku najdete na Discogsу.",
 ];
 
 export const education: Education[] = [
@@ -114,7 +129,7 @@ export const education: Education[] = [
 export const experience: Experience[] = [
   {
     company: "Skymaps s.r.o.",
-    role: "Analytik GIS",
+    role: "GIS & Remote Sensing Analyst",
     period: "únor 2025 – Současnost",
     location: "Česká republika",
     highlights: [
@@ -128,30 +143,24 @@ export const experience: Experience[] = [
   },
   {
     company: "Univerzita Palackého v Olomouci",
-    role: "Správce webu",
+    role: "Web Developer & Administrator",
     period: "květen 2023 – Současnost",
     location: "Česká republika",
     highlights: [
-      "Správa aktualizací a změn obsahu webových stránek",
-      "Řešení chyb na webových stránkách a implementace oprav",
+      "Správa webů s vysokou návštěvností – celkem 199 800 návštěvníků a 452 000 zobrazení",
+      "Zapracování úprav do 24 hodin od zadání",
+      "Řešení chyb a implementace oprav na webových stránkách",
       "Aktualizace obsahu a funkcí tak, aby odrážely aktuální informace",
       "Nástroje: WordPress, YOOtheme Builder",
     ],
-  },
-  {
-    company: "Univerzita Palackého v Olomouci",
-    role: "3D Modeling Specialist",
-    period: "prosinec 2025 – únor 2026",
-    location: "Česká republika",
-    highlights: [
-      "3D modelování objektů pro fyzickou instalaci a 3D tisk",
-      "Úprava a optimalizace geometrie modelů pro výrobu",
-      "Nástroje: Blender, 3D Builder",
+    links: [
+      { label: "olomouckymajales.cz", url: "https://olomouckymajales.cz/" },
+      { label: "meetup.upol.cz", url: "https://meetup.upol.cz/" },
     ],
   },
   {
     company: "Skymaps s.r.o.",
-    role: "Analytik GIS",
+    role: "GIS & Remote Sensing Analyst",
     period: "únor 2025 – březen 2025",
     location: "Česká republika",
     highlights: [
@@ -161,7 +170,65 @@ export const experience: Experience[] = [
   },
 ];
 
+export const universityProjects: Experience[] = [
+  {
+    company: "Univerzita Palackého v Olomouci – KGI / FF / VTP UP + Advolution",
+    role: "Koordinátor sběru dat a terénní výzkumník",
+    period: "2026 – dosud",
+    location: "Olomouc, Česká republika",
+    project: "Výzkum vnímání a vizuální pozornosti v městském prostředí",
+    highlights: [
+      "Realizace 40–60 jízd se sledováním vizuální pozornosti pomocí eye-tracking brýlí v Olomouci",
+     
+    ],
+  },
+  {
+    company: "Univerzita Palackého v Olomouci",
+    role: "3D Modeling Specialist",
+    period: "prosinec 2025 – únor 2026",
+    location: "Česká republika",
+    project: "Modelování, zpracování a výroba rozměrných 3D modelů dvou grott včetně světelné a vodní instalace",
+    highlights: [
+      "3D modelování objektů pro fyzickou instalaci a 3D tisk",
+      "Úprava a optimalizace geometrie modelů pro výrobu",
+      "Nástroje: Blender, 3D Builder",
+    ],
+  },
+];
+
 export const projects: Project[] = [
+  {
+    title: "VečerkaPlus",
+    description:
+      "Noční rozvoz alkoholu, nápojů a snacků ve Frýdku-Místku a okolí s důrazem na rychlost, jednoduchost objednávky a moderní webovou aplikaci.",
+    features: [
+      "Vývoj webové aplikace pro objednávky (React + Vite)",
+      "Napojení na Supabase (databáze objednávek a produktů)",
+      "Integrace Google Maps API (výpočet vzdálenosti a doručení)",
+      "Automatizace notifikací (email + Telegram)",
+      "Návrh UX pro rychlé noční objednávky",
+    ],
+    tags: ["React", "Vite", "Supabase", "PostgreSQL", "Google Maps API", "JavaScript"],
+    link: "https://vecerkaplus.cz/",
+    linkLabel: "vecerkaplus.cz",
+  },
+  {
+    title: "POGEO – Volební analýza Pirátů 2025",
+    description:
+      "Prostorová analýza volebního úspěchu České pirátské strany na úrovni 6 157 obcí s využitím Geographically Weighted Regression.",
+    features: [
+      "GWR model (R² 0.445) vs OLS (R² 0.188) — eliminace prostorové autokorelace reziduí",
+      "Prediktory z SLDB 2021: vzdělání, zaměstnanost, věřící aj.",
+      "Kartografické výstupy a interaktivní volební atlas",
+    ],
+    tags: ["R", "GWR", "Prostorová analýza", "Kartografie", "ArcGIS Pro"],
+    link: "https://github.com/SvobVojtech/pogeo_2026",
+    linkLabel: "GitHub",
+    links: [
+      { label: "Volební atlas", url: "https://petrmikeska.cz/pogeo/" },
+      { label: "Interaktivní mapa", url: "https://petrmikeska.cz/pogeo/map/" },
+    ],
+  },
   {
     title: "AI Map Generation Evaluation",
     description:
@@ -186,6 +253,8 @@ export const projects: Project[] = [
     tags: ["ArcGIS Pro", "Python", "Network Analyst"],
     link: "https://github.com/MetrPikeska/park-accessibility-toolbox",
     linkLabel: "GitHub",
+    webLink: "https://petrmikeska.cz/bp/",
+    webLinkLabel: "Web",
   },
   {
     title: "GEOTE Klima",
@@ -199,6 +268,8 @@ export const projects: Project[] = [
     tags: ["PostGIS", "REST API", "JavaScript", "Python"],
     link: "https://github.com/MetrPikeska/geote-klima-ui",
     linkLabel: "GitHub",
+    webLink: "https://petrmikeska.cz/geote",
+    webLinkLabel: "Web",
   },
   {
     title: "VYGEO Opálená",
@@ -301,11 +372,11 @@ export const skills: SkillCategory[] = [
   },
   {
     name: "Web Technologies",
-    items: ["HTML", "CSS", "REST API", "WordPress", "YOOtheme"],
+    items: ["HTML", "CSS", "REST API", "WordPress", "YOOtheme", "Supabase"],
   },
   {
     name: "Databases",
-    items: ["PostgreSQL", "PostGIS", "MySQL"],
+    items: ["PostgreSQL", "PostGIS", "MySQL", "Supabase"],
   },
   {
     name: "Geospatial & Data Libraries",
@@ -336,6 +407,7 @@ export const certifications: Certification[] = [
     date: "Květen 2023",
     description:
       "Kurz pokrývající základy programování v Pythonu se zaměřením na automatizaci GIS úloh a práci s geoprostorovými daty.",
+    pdfUrl: "/certifikaty/python-for-everyone.pdf",
   },
   {
     name: "Introduction to IoT",
@@ -343,6 +415,7 @@ export const certifications: Certification[] = [
     date: "Duben 2020",
     description:
       "Kurz pokrýval IoT a digitální transformaci, důležitost softwaru a dat, automatizaci, umělou inteligenci a základy síťové bezpečnosti.",
+    pdfUrl: "/certifikaty/iot-cisco.pdf",
   },
   {
     name: "Online výcvik pilota bezpilotních prostředků",
@@ -350,6 +423,7 @@ export const certifications: Certification[] = [
     date: "Říjen 2024",
     description:
       "Certifikát / Oprávnění pro piloty bezpilotních prostředků vydaný Úřadem pro civilní letectví ČR v souladu s předpisy EASA.",
+    pdfUrl: "/certifikaty/pilot-dron.pdf",
   },
   {
     name: "Instruktor snowboardingu APUL/D",
@@ -357,6 +431,15 @@ export const certifications: Certification[] = [
     date: "Prosinec 2021 – Leden 2027",
     description:
       "Licence instrukce snowboardingu – Asociace profesionálních učitelů lyžování a lyžařských škol.",
+    pdfUrl: "/certifikaty/apul-snowboard.pdf",
+  },
+  {
+    name: "ISSonVIS 2026 – International Spring School on Visualization",
+    issuer: "Katedra geoinformatiky, UPOL",
+    date: "Duben 2026",
+    description:
+      "Certifikát účasti na mezinárodní jarní škole vizualizace. Téma: Emotions and Map: The Affective Dimension of Visualisation.",
+    pdfUrl: "/certifikaty/ISSonVIS2026_Mikeska_Petr.pdf",
   },
 ];
 
@@ -405,6 +488,44 @@ export const services: Service[] = [
     tags: ["ESP32", "MQTT", "Python", "PostgreSQL"],
   },
 ];
+
+export const ui = {
+  nav: {
+    about: "O mně",
+    education: "Vzdělání",
+    experience: "Praxe",
+    projects: "Projekty",
+    portfolio: "Portfolio",
+    skills: "Dovednosti",
+    certifications: "Certifikace",
+    services: "Služby",
+    contact: "Kontakt",
+  },
+  hero: {
+    more: "Více",
+    contact: "Kontakt",
+    role: "GIS Analytik",
+  },
+  sections: {
+    about: "O mně",
+    education: "Vzdělání",
+    experience: "Praxe",
+    projects: "Projekty",
+    portfolio: "Portfolio",
+    skills: "Dovednosti",
+    certifications: "Certifikace",
+    services: "Služby",
+    contact: "Kontakt",
+  },
+  contact: {
+    tagline: "Pokud máte zájem o spolupráci, neváhejte mě kontaktovat.",
+  },
+  footer: {
+    icoLabel: "IČO",
+    copyright:
+      "© 2026 Petr Mikeska — Fyzická osoba podnikající dle živnostenského zákona",
+  },
+};
 
 export const contact = {
   email: "piter.mikeska@gmail.com",

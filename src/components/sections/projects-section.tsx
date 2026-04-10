@@ -1,15 +1,18 @@
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
-import { projects, type Project } from "@/data/content";
+import { useContent } from "@/hooks/use-content";
+import type { Project } from "@/data/content";
 import { ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function ProjectsSection() {
+  const { projects, ui } = useContent();
+
   return (
-    <section id="projects" className="py-24 lg:py-32 bg-parchment-dark">
+    <section id="portfolio" className="py-24 lg:py-32 bg-parchment-dark">
       <div className="max-w-6xl mx-auto px-6">
         <Reveal>
-          <SectionHeading>Projekty</SectionHeading>
+          <SectionHeading>{ui.sections.portfolio}</SectionHeading>
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -80,15 +83,40 @@ function ProjectCard({
             </span>
           ))}
         </div>
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-topo transition-colors group-hover:text-topo"
-        >
-          <ExternalLink className="w-3.5 h-3.5" />
-          {project.linkLabel}
-        </a>
+        <div className="flex flex-wrap items-center gap-3">
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-topo transition-colors group-hover:text-topo"
+          >
+            <ExternalLink className="w-3.5 h-3.5" />
+            {project.linkLabel}
+          </a>
+          {project.webLink && (
+            <a
+              href={project.webLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-topo transition-colors"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              {project.webLinkLabel}
+            </a>
+          )}
+          {project.links?.map((l, i) => (
+            <a
+              key={i}
+              href={l.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-topo transition-colors"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              {l.label}
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );
