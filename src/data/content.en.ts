@@ -119,10 +119,15 @@ export const experience: Experience[] = [
     period: "May 2023 – Present",
     location: "Czech Republic",
     highlights: [
-      "Managing website content updates and changes",
+      "Managing high-traffic websites – 199,800 visitors and 452,000 page views in total",
+      "Delivering requested changes within 24 hours",
       "Resolving website issues and implementing fixes",
       "Updating content and features to reflect current information",
       "Tools: WordPress, YOOtheme Builder",
+    ],
+    links: [
+      { label: "olomouckymajales.cz", url: "https://olomouckymajales.cz/" },
+      { label: "meetup.upol.cz", url: "https://meetup.upol.cz/" },
     ],
   },
   {
@@ -225,6 +230,8 @@ export const projects: Project[] = [
     tags: ["ArcGIS Pro", "Python", "Network Analyst"],
     link: "https://github.com/MetrPikeska/park-accessibility-toolbox",
     linkLabel: "GitHub",
+    webLink: "https://petrmikeska.cz/bp/",
+    webLinkLabel: "Web",
   },
   {
     title: "GEOTE Klima",
@@ -238,6 +245,8 @@ export const projects: Project[] = [
     tags: ["PostGIS", "REST API", "JavaScript", "Python"],
     link: "https://github.com/MetrPikeska/geote-klima-ui",
     linkLabel: "GitHub",
+    webLink: "https://petrmikeska.cz/geote",
+    webLinkLabel: "Web",
   },
   {
     title: "VYGEO Opálená",
@@ -400,6 +409,14 @@ export const certifications: Certification[] = [
     description:
       "Snowboard instruction license – Association of Professional Ski and Snowboard Instructors.",
     pdfUrl: "/certifikaty/apul-snowboard.pdf",
+  },
+  {
+    name: "ISSonVIS 2026 – International Spring School on Visualization",
+    issuer: "Department of Geoinformatics, UPOL",
+    date: "April 2026",
+    description:
+      "Certificate of attendance at the international spring school on visualization. Topic: Emotions and Map: The Affective Dimension of Visualisation.",
+    pdfUrl: "/certifikaty/ISSonVIS2026_Mikeska_Petr.pdf",
   },
 ];
 

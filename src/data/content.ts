@@ -14,6 +14,7 @@ export interface Experience {
   location: string;
   project?: string;
   highlights: string[];
+  links?: { label: string; url: string }[];
 }
 
 export interface Project {
@@ -23,6 +24,8 @@ export interface Project {
   tags: string[];
   link: string;
   linkLabel: string;
+  webLink?: string;
+  webLinkLabel?: string;
   links?: { label: string; url: string }[];
 }
 
@@ -144,10 +147,15 @@ export const experience: Experience[] = [
     period: "květen 2023 – Současnost",
     location: "Česká republika",
     highlights: [
-      "Správa aktualizací a změn obsahu webových stránek",
-      "Řešení chyb na webových stránkách a implementace oprav",
+      "Správa webů s vysokou návštěvností – celkem 199 800 návštěvníků a 452 000 zobrazení",
+      "Zapracování úprav do 24 hodin od zadání",
+      "Řešení chyb a implementace oprav na webových stránkách",
       "Aktualizace obsahu a funkcí tak, aby odrážely aktuální informace",
       "Nástroje: WordPress, YOOtheme Builder",
+    ],
+    links: [
+      { label: "olomouckymajales.cz", url: "https://olomouckymajales.cz/" },
+      { label: "meetup.upol.cz", url: "https://meetup.upol.cz/" },
     ],
   },
   {
@@ -246,6 +254,8 @@ export const projects: Project[] = [
     tags: ["ArcGIS Pro", "Python", "Network Analyst"],
     link: "https://github.com/MetrPikeska/park-accessibility-toolbox",
     linkLabel: "GitHub",
+    webLink: "https://petrmikeska.cz/bp/",
+    webLinkLabel: "Web",
   },
   {
     title: "GEOTE Klima",
@@ -259,6 +269,8 @@ export const projects: Project[] = [
     tags: ["PostGIS", "REST API", "JavaScript", "Python"],
     link: "https://github.com/MetrPikeska/geote-klima-ui",
     linkLabel: "GitHub",
+    webLink: "https://petrmikeska.cz/geote",
+    webLinkLabel: "Web",
   },
   {
     title: "VYGEO Opálená",
@@ -421,6 +433,14 @@ export const certifications: Certification[] = [
     description:
       "Licence instrukce snowboardingu – Asociace profesionálních učitelů lyžování a lyžařských škol.",
     pdfUrl: "/certifikaty/apul-snowboard.pdf",
+  },
+  {
+    name: "ISSonVIS 2026 – International Spring School on Visualization",
+    issuer: "Katedra geoinformatiky, UPOL",
+    date: "Duben 2026",
+    description:
+      "Certifikát účasti na mezinárodní jarní škole vizualizace. Téma: Emotions and Map: The Affective Dimension of Visualisation.",
+    pdfUrl: "/certifikaty/ISSonVIS2026_Mikeska_Petr.pdf",
   },
 ];
 

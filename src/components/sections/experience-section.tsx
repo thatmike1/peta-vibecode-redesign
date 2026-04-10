@@ -1,6 +1,7 @@
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { useContent } from "@/hooks/use-content";
+import { ExternalLink } from "lucide-react";
 
 export function ExperienceSection() {
   const { experience, ui } = useContent();
@@ -41,6 +42,22 @@ export function ExperienceSection() {
                     </li>
                   ))}
                 </ul>
+                {exp.links && exp.links.length > 0 && (
+                  <div className="flex flex-wrap gap-3 mt-3">
+                    {exp.links.map((link, j) => (
+                      <a
+                        key={j}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-topo transition-colors"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
                 {i < experience.length - 1 && (
                   <div className="mt-8 border-b border-border" />
                 )}
