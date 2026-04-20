@@ -173,13 +173,14 @@ export const experience: Experience[] = [
 export const universityProjects: Experience[] = [
   {
     company: "Univerzita Palackého v Olomouci – KGI / FF / VTP UP + Advolution",
-    role: "Koordinátor sběru dat a terénní výzkumník",
+    role: "Koordinátor terénního sběru dat a datový analytik",
     period: "2026 – dosud",
     location: "Olomouc, Česká republika",
-    project: "Výzkum vnímání a vizuální pozornosti v městském prostředí",
+    project: "Výzkum vnímání vizuální pozornosti v městském prostředí pomocí eye-tracking technologie",
     highlights: [
-      "Realizace 40–60 jízd se sledováním vizuální pozornosti pomocí eye-tracking brýlí v Olomouci",
-     
+      "Logistická koordinace terénních jízd se sledováním vizuální pozornosti účastníků pomocí eye-tracking brýlí v Olomouci",
+      "Zpracování a čištění dat ze sledování pohledů; příprava datových výstupů pro analýzu",
+      "Tvorba ROI (regionů zájmu) pro hodnocení vizuální expozice venkovní reklamy",
     ],
   },
   {
@@ -211,6 +212,19 @@ export const projects: Project[] = [
     tags: ["React", "Vite", "Supabase", "PostgreSQL", "Google Maps API", "JavaScript"],
     link: "https://vecerkaplus.cz/",
     linkLabel: "vecerkaplus.cz",
+  },
+  {
+    title: "Eye-Tracking – Vizuální pozornost v městském prostředí",
+    description:
+      "Výzkum vnímání vizuální pozornosti v městském prostředí pomocí eye-tracking technologie. Projekt KGI / FF / VTP UP + Advolution.",
+    features: [
+      "Logistická koordinace terénních jízd se sledováním vizuální pozornosti pomocí eye-tracking brýlí v Olomouci",
+      "Zpracování a čištění dat ze sledování pohledů; příprava datových výstupů pro analýzu",
+      "Tvorba ROI (regionů zájmu) pro hodnocení vizuální expozice venkovní reklamy",
+    ],
+    tags: ["Eye-Tracking", "Datová analýza", "ROI", "Terénní výzkum", "Urban GIS"],
+    link: "https://www.upol.cz",
+    linkLabel: "UPOL",
   },
   {
     title: "POGEO – Volební analýza Pirátů 2025",
@@ -384,7 +398,7 @@ export const skills: SkillCategory[] = [
   },
   {
     name: "Computer Vision & AI",
-    items: ["YOLOv8", "OpenCV", "TensorFlow", "PyTorch"],
+    items: ["YOLOv8", "OpenCV", "TensorFlow", "PyTorch", "CVAT"],
   },
   {
     name: "AI Nástroje",
